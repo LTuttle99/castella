@@ -13,3 +13,7 @@ Research answers and simulator calculations run locally. No generative AI provid
 ## Persistence and privacy
 
 Local storage holds saved scenarios, assistant tone, and earned achievements on the visitor's device. Chat history is held in page memory only. No account or remote service is used.
+
+## Phase 5 dialogue modules
+
+conversation.js manages pure state transitions and response composition; tools.js validates and calculates scenarios and resource estimates shared with the simulator; chat-ui.js renders text/cards and executes only validated app actions. Context stays in page memory. Static build emits these three scripts and scenario.js after syntax checks, and cleans stale output first. There is no API, backend or model service. See CONVERSATIONAL_ARCHITECTURE.md.

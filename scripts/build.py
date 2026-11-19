@@ -17,9 +17,15 @@ with tempfile.NamedTemporaryFile("w", suffix=".js", encoding="utf-8") as temp:
     temp.flush()
     subprocess.run(["node", "--check", temp.name], check=True)
 subprocess.run(["node", "--check", str(ROOT / "scripts" / "scenario.js")], check=True)
+if DIST.exists():
+    shutil.rmtree(DIST)
 DIST.mkdir(exist_ok=True)
 shutil.copy2(SOURCE, DIST / "index.html")
 scripts = DIST / "scripts"
 scripts.mkdir(exist_ok=True)
 shutil.copy2(ROOT / "scripts" / "scenario.js", scripts / "scenario.js")
 print(f"Static production build created at {DIST}")
+
+for name in ["tools.js", "conversation.js", "chat-ui.js"]:
+    subprocess.run(["node", "--check", str(ROOT / "scripts" / name)], check=True)
+    shutil.copy2(ROOT / "scripts" / name, scripts / name)

@@ -22,3 +22,9 @@
 ## Limits
 
 Browser testing used a desktop viewport. A dedicated mobile viewport and assistive-technology audit were not available in this run. Reduced-motion behavior is supported in CSS and JavaScript but was not browser-emulated. No public historical dataset or chart is available. GitHub Pages deployment succeeded. The public site was opened and its assistant calculation, operations page, branding, and clean console were verified.
+
+## Phase 5
+
+Baseline production commit 6626171c2b217aae742a58744aa795c9f5f5ef0d was inspected; Phase 4 PR #1 is still open. Original tests and build passed before changes. Final checks pass 62 conversations / 171 turns plus tool/personality/action invariants, 45 original parser assertions, 2 Python tests and the static production build. See CHATBOT_TEST_REPORT.md and tests/conversation-results.json. Production has not been updated by Phase 5.
+
+Phase 5 browser results: source and nested dist build loaded, guided rate chips produced 31,500 arrivals, parking used 8,190 vehicles, updated 80% scenario produced 28,000, comparison displayed -3,500 / -11.11%, decimal 85.5% transferred as 29,925, older-card actions preserved their original values, reset/clear controls worked, tone persisted across reload, mobile chat was readable at 375×812, and the console was clean. No API/model was tested or activated. Full assistive-technology and exhaustive older achievement/confetti regression remain unverified.

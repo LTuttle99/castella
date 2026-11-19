@@ -32,3 +32,9 @@ See [IMPLEMENTATION_AUDIT.md](IMPLEMENTATION_AUDIT.md), [DATA_SOURCES.md](DATA_S
 Repository: https://github.com/LTuttle99/castella
 
 The GitHub Actions workflow in `.github/workflows/deploy.yml` tests and builds the site into `dist/`, then deploys GitHub Pages on every push to `main`. The configured site address is https://ltuttle99.github.io/castella/ (publication verification is recorded in DEPLOYMENT.md).
+
+## Phase 5 local conversations
+
+The assistant now supports guided multi-turn ticket scenarios, casual detours, percentage-point/proportional changes, all four operations tools, result cards, immutable scenario actions, and three tone modes. Enter sends; Shift+Enter adds a line. New/Clear conversation resets page-memory chat; Reset scenario context preserves the transcript and saved scenarios. No API or generative model is used. Historical Phase 4 data is not included because PR #1 is unmerged.
+
+Run `node tests/test_conversation.js`, `node tests/test_scenario.js`, `python3 -m unittest discover -s tests -v`, and `python3 scripts/build.py`. See CONVERSATIONAL_ARCHITECTURE.md, CHATBOT_TEST_REPORT.md, and AI_CONFIGURATION.md.

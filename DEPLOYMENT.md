@@ -9,3 +9,7 @@ Pages source is GitHub Actions. `.github/workflows/deploy.yml` runs on pushes to
 For future changes, clone the repository, edit the source, run the tests and build, commit, and push to main. Check Actions for the deployment result. The production artifact contains index.html and scripts/scenario.js. No secrets, raw research materials, or downloaded datasets are published.
 
 The first workflow passed tests/build and failed at configure-pages before Pages was enabled. Pages was enabled and the failed job restarted. The restarted workflow succeeded. The public URL was opened and verified: branding, assistant 35,000 × 90% = 31,500, operations outputs, and no console warnings/errors. Mobile viewport testing was not performed.
+
+## Phase 5 safe release
+
+Branch feature/phase5-conversational-ai starts from production main, with no Phase 4 dependency. Pull requests run conversation tests, original tests and a clean static build. Main's existing Pages deployment includes the new conversation suite and deploys only dist/. No backend/API/model configuration is required or deployed. Review and merge only after checks pass and release is authorized. If Phase 4 merges first, resolve overlapping app/build/workflow changes and run both historical and conversation tests before releasing.
