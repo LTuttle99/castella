@@ -13,3 +13,7 @@ Research answers and simulator calculations run locally. No generative AI provid
 ## Persistence and privacy
 
 Local storage holds saved scenarios, assistant tone, and earned achievements on the visitor's device. Chat history is held in page memory only. No account or remote service is used.
+
+## Phase 4
+
+Phase 4 adds attendance_pipeline.py for download/cache, schema validation, season normalization, reconciliation, checksummed export, and provenance. history.js contains pure deterministic aggregation/query functions. history-ui.js loads the 146 KB local static asset and renders filters and accessible text/bar charts. Historical question routing runs before the scenario parser, preserving ticket context. Builds validate the pinned manifest without network access. No backend or paid provider was added.

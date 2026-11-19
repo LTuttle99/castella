@@ -1,0 +1,10 @@
+{
+  "source_sha256": "7577b6ff7a80bd16d6bbac0d4bc9ca87dace64c1a75998206bc9769ec75ba9aa",
+  "export_sha256": "7cc2a2ee550d46105400eccc080bca432b8cf5ae4b8a033831823a1dab097f3c",
+  "records": 638,
+  "coverage": [
+    2000,
+    2019
+  ],
+  "schema_version": "1.0.0"
+}
