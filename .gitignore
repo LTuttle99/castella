@@ -1,8 +1,10 @@
 dist/
 __pycache__/
 *.py[cod]
-.env*
+.env
+.env.*
 .venv/
+venv/
 .DS_Store
 data/
 *.log
