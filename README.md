@@ -26,3 +26,9 @@ Open `index.html` in a modern browser, or serve this folder with `python3 -m htt
 The poster title “Forecasting NFL Game Attendance” was supplied, though its file was not present in the inspected workspace. No game-level source dataset, notebook, trained estimator, validation predictions, or stadium operating ratios were provided. The 35,000 tickets at 90% utilization example is arithmetic based on an explicit assumption. No public NFL utilization rate or new prediction is claimed.
 
 See [IMPLEMENTATION_AUDIT.md](IMPLEMENTATION_AUDIT.md), [DATA_SOURCES.md](DATA_SOURCES.md), [MODEL_VALIDATION.md](MODEL_VALIDATION.md), and [DEPLOYMENT.md](DEPLOYMENT.md). Run `node tests/test_scenario.js`, `python3 -m unittest discover -s tests -v`, and `python3 scripts/build.py` to test and create `dist/`.
+
+## GitHub publication
+
+Repository: https://github.com/LTuttle99/castella
+
+The GitHub Actions workflow in `.github/workflows/deploy.yml` tests and builds the site into `dist/`, then deploys GitHub Pages on every push to `main`. The configured site address is https://ltuttle99.github.io/castella/ (publication verification is recorded in DEPLOYMENT.md).

@@ -21,4 +21,4 @@
 
 ## Limits
 
-Browser testing used a desktop viewport. A dedicated mobile viewport and assistive-technology audit were not available in this run. Reduced-motion behavior is supported in CSS and JavaScript but was not browser-emulated. No public historical dataset or chart is available. No public deployment was performed or verified.
+Browser testing used a desktop viewport. A dedicated mobile viewport and assistive-technology audit were not available in this run. Reduced-motion behavior is supported in CSS and JavaScript but was not browser-emulated. No public historical dataset or chart is available. GitHub Pages deployment succeeded. The public site was opened and its assistant calculation, operations page, branding, and clean console were verified.
