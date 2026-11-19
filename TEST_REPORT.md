@@ -1,3 +1,5 @@
+Review pull request: https://github.com/LTuttle99/castella/pull/8 — open, unmerged; Phase 7 is not deployed.
+
 # Phase 7 operations research — review branch
 
 The separate Browser AI upgrade was merged in PR #7 and successfully deployed to GitHub Pages; actual public-browser model loading and conversation were verified. Phase 7 builds on that production release and is prepared on feature/phase7-operations-research for its own review, not automatically deployed.

@@ -1,3 +1,5 @@
+Review pull request: https://github.com/LTuttle99/castella/pull/8 — open, unmerged; Phase 7 is not deployed.
+
 # Phase 7 implementation report
 
 Base: production Browser AI release `ae6bf1009a6d39f2de6489fe1f87ad6f1d5f1b2b`. Branch: feature/phase7-operations-research. Existing calculations, historical attendance data, visual styling, personalities, achievements, simulator and Pages deployment were retained. The pre-change audit is OPERATIONS_ASSUMPTION_AUDIT.md.
