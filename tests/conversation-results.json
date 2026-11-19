@@ -1,6 +1,6 @@
 {
-  "conversations": 62,
-  "turns": 171,
+  "conversations": 64,
+  "turns": 174,
   "results": [
     {
       "name": "professional: Hey.",
@@ -371,6 +371,18 @@
     {
       "name": "Historical follow-up cannot borrow ticket results",
       "turns": 4,
+      "tone": "balanced",
+      "passed": true
+    },
+    {
+      "name": "Calculation source follow-up",
+      "turns": 2,
+      "tone": "balanced",
+      "passed": true
+    },
+    {
+      "name": "Year never becomes a ticket count",
+      "turns": 1,
       "tone": "balanced",
       "passed": true
     }

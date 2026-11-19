@@ -37,6 +37,8 @@ run('Explain after reset',[start,'Reset scenario context','Explain that'],(s,r)=
 run('Low turnout humor once',[start,'Only 40% attend.','Back to my scenario'],(s,r)=>{assert.match(r[1].text,/cooked/);assert.doesNotMatch(r[2].text,/cooked/)},'fun');
 run('Casual does not discard pending clarification',[start,"What if another 5% don't come?",'Thanks','I mean percentage points.'],s=>assert.equal(s.scenario.current.arrivals,29750));
 run('Historical follow-up cannot borrow ticket results',[start,'What if 80% attend?','Colts attendance in 2015','Did it increase?'],(s,r)=>assert.equal(r[3].intent,'historical-unavailable'));
+run('Calculation source follow-up',[start,'Where did that number come from?'],(s,r)=>{assert.equal(r[1].intent,'source');assert.match(r[1].text,/ticket count multiplied/)});
+run('Year never becomes a ticket count',['Lions attendance in 2015'],(s,r)=>{assert.equal(r[0].intent,'historical-unavailable');assert.equal(s.scenario.tickets,null)});
 // Tool and action invariants independent of phrasing.
 assert.equal(T.operations(31500).staffing,139);assert.equal(T.operations(31500).concessions,35501);assert.equal(T.operations(31500).entry,9);
 assert.equal(T.validateAction({type:'execute',code:'alert(1)'}),null);assert.equal(T.validateAction({type:'open',page:'https://bad.example'}),null);

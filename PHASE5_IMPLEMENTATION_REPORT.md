@@ -14,7 +14,7 @@ Phase 5 branches from production 6626171c2b217aae742a58744aa795c9f5f5ef0d, not t
 
 ## Verification and release
 
-62 automated conversations / 171 turns and additional tool/action invariants pass, along with 45 original scenario assertions, 2 Python tests and the production build. Browser checks exercised the new chat and simulator actions. See both test reports for precise coverage and limitations. Release branch: feature/phase5-conversational-ai. Production is unchanged pending PR review and validation. No API gateway or model is deployed.
+64 automated conversations / 174 turns and additional tool/action invariants pass, along with 45 original scenario assertions, 2 Python tests and the production build. Browser checks exercised the new chat and simulator actions. See both test reports for precise coverage and limitations. Release branch: feature/phase5-conversational-ai. Production is unchanged pending PR review and validation. No API gateway or model is deployed.
 
 The branch should not be merged mechanically with Phase 4: both modify index.html, build.py and workflows. If Phase 4 is merged first, combine those changes and rerun both historical and conversation suites before release. Main's automatic Pages workflow is preserved, and a separate pull-request validation job has no deployment permissions.
 

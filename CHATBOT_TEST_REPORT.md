@@ -7,7 +7,7 @@ The production baseline passed 45 scenario assertions, 2 Python tests, and the s
 Final automated commands:
 
 - `node tests/test_scenario.js`: 45 original parser assertions passed.
-- `node tests/test_conversation.js --report`: 62 realistic conversations, 171 turns, plus numerical/tool/action/personality invariants passed. The per-conversation results are in tests/conversation-results.json.
+- `node tests/test_conversation.js --report`: 64 realistic conversations, 174 turns, plus numerical/tool/action/personality invariants passed. The per-conversation results are in tests/conversation-results.json.
 - `python3 -m unittest discover -s tests -v`: 2 original Python tests passed.
 - `python3 scripts/build.py`: syntax-checked the inline app and all conversation assets, then produced a clean dist/ with no stale Phase 4 assets.
 
