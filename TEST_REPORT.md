@@ -1,3 +1,13 @@
+# Phase 7 operations research — review branch
+
+The separate Browser AI upgrade was merged in PR #7 and successfully deployed to GitHub Pages; actual public-browser model loading and conversation were verified. Phase 7 builds on that production release and is prepared on feature/phase7-operations-research for its own review, not automatically deployed.
+
+The pre-change audit, 17 scoped reference records, four-source provenance, explicit role-cost formulas, custom gross spending, user-defined sensitivity, benchmark/source controls and contextual assistant are documented in PHASE7_IMPLEMENTATION_REPORT.md and OPERATIONS_RESEARCH.md. Missing empirical inputs remain labeled assumptions; unsupported benchmark modes are unavailable. No historical attendance bytes were changed.
+
+Current validation: 42 operations JS cases, 80 Ollama mock scenarios, 24 Browser AI cases, original JavaScript suites, 20 Python tests and offline build/data checks. Browser results and the PR link are appended after verification. Production deployment remains the existing main-only GitHub Actions workflow. No source collection is needed for a normal build.
+
+## Earlier release notes
+
 # Browser AI update — 19 November 2026
 
 Castella now includes opt-in **Browser AI**, using self-hosted WebLLM 0.2.89 and a pinned 278 MB Qwen 0.5B model download. No installation, paid API or inference backend is required. Standard remains the default; Ollama remains optional. See [BROWSER_AI.md](BROWSER_AI.md) for setup, architecture, privacy, limitations and test evidence.
@@ -63,3 +73,7 @@ Static asset regression: test_build_assets.py builds the real output, checks sev
 ## Optional browser reproduction
 
 Start `python3 scripts/serve_local.py` separately. Install Playwright in a temporary directory with `npm install --prefix work/browser-qa playwright-core` and install/use a compatible Chromium. Then run `PLAYWRIGHT_MODULE=../work/browser-qa/node_modules/playwright-core CASTELLA_BROWSER_EXECUTABLE=/absolute/path/to/chromium node tests/test_browser_local.js` and the same command for `tests/test_browser_product.js`. The first script requires a running local tool-capable Ollama model for discovery, but mocks inference. Screenshots/logs are written to ignored `work/`. Neither browser script runs in offline CI.
+
+## Phase 7 browser verification
+
+Chromium 153 verified explicit wage selection and edited-wage reclassification, $2,666.08 labor from entered synthetic role/time/burden inputs, custom $12-per-attendee gross spending, sensitivity/invalid bounds, saved comparison, 17 source cards/links, year/scope labels, operations chat and follow-ups, no live third-party research requests, and 390px layout with no page errors. A simulated HTTP 503 confirmed missing evidence is acknowledged while custom labor, all navigation and Standard ticket chat still work. Original simulator/operations inputs, errors, achievements/persistence and reduced-motion behavior also passed browser regression. Historical data retained 638 team-seasons, 10,846 weekly slots including 638 missing (10,208 nonmissing); no historical data was altered. Source/evidence screenshots and logs are in verification/phase7/. Safari/Firefox and new real-model operations benchmark inference were not separately tested; Ollama's new tool was exercised through a mocked provider with actual deterministic benchmark retrieval.

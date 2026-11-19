@@ -17,6 +17,7 @@ const definitions=[
  ['metric_definitions','Explain reported attendance versus tickets, scans and arrivals.',obj()],
  ['open_section','Offer an allowlisted navigation button; never execute code.',obj({page:choice(['simulator','operations','analytics','research'])},['page'])],
  ['selected_scenario','Read the explicitly selected simulator scenario.',obj()],
+ ['operations_research','Retrieve sourced operations benchmarks, wage provenance and deterministic labor/spending estimates for the user question.',obj()],
  ['verified_answer','Use the existing trusted conversation engine for this question.',obj()]
 ].map(([name,description,parameters])=>({type:'function',function:{name,description,parameters}}));
 function validate(schema,value){
@@ -43,7 +44,7 @@ function registry(initial,text,options={},ledger=new Map()){
  }
  function scenarioResponse(v){return {intent:'scenario',text:`${f(v.tickets)} ${v.definition} tickets × ${f(v.showUp*100)}% assumed show-up = ${f(v.arrivals)} illustrative arrivals; ${f(v.unused)} unused tickets.`,source:'Verified ticket utilization tool · user assumptions',card:{title:'Ticket scenario',rows:[['Tickets '+v.definition,f(v.tickets)],['Assumed show-up',f(v.showUp*100)+'%'],['Illustrative arrivals',f(v.arrivals)],['Unused tickets',f(v.unused)]]},actions:[{type:'scenario',scenario:v}],suggestions:['And parking?','Compare those two.'],facts:v}}
  function setScenario(v){const old=state.scenario.current;state.scenario={...state.scenario,...v,current:v,previous:old&&JSON.stringify(old)!==JSON.stringify(v)?old:state.scenario.previous};state.lastResult={type:'scenario',value:v};state.topic='scenario';return scenarioResponse(v)}
- function execute(name,args){const def=definitions.find(d=>d.function.name===name);if(!def)throw Error('Unsupported tool.');validate(def.function.parameters,args);
+ function execute(name,args){const def=definitions.find(d=>d.function.name===name);if(!def)throw Error('Unsupported tool.');validate(def.function.parameters,args);if(baseline.intent==='operations-research'&&!['operations_research','verified_answer','open_section'].includes(name))throw Error('Use the operations research tool for wage, cost and source questions.');
   const key=name+canonical(args);if(ledger.has(key)){const cached=ledger.get(key);if(!applied.has(key))state=JSON.parse(JSON.stringify(cached.state));applied.add(key);return cached.result}
   if(ledger.size>=4)throw Error('Tool-call limit reached.');
   let result;

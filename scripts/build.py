@@ -9,8 +9,9 @@ from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 DIST=ROOT/'dist'
 html=(ROOT/'index.html').read_text()
-modules=['scenario.js','tools.js','history.js','history-dialogue.js','conversation.js','history-ui.js','local-ai-tools.js','local-ai.js','browser-ai.js','chat-ui.js']
+modules=['scenario.js','tools.js','history.js','history-dialogue.js','operations-research.js','operations-dialogue.js','conversation.js','history-ui.js','local-ai-tools.js','local-ai.js','browser-ai.js','operations-ui.js','chat-ui.js']
 subprocess.run(['python3',str(ROOT/'scripts'/'attendance_pipeline.py'),'--check'],check=True)
+subprocess.run(['python3',str(ROOT/'scripts'/'operations_pipeline.py'),'--check'],check=True)
 for name in modules:
     assert f'scripts/{name}' in html, f'Missing script reference: {name}'
     subprocess.run(['node','--check',str(ROOT/'scripts'/name)],check=True)
@@ -21,11 +22,15 @@ with tempfile.NamedTemporaryFile('w',suffix='.js') as temp:
 if DIST.exists():shutil.rmtree(DIST)
 (DIST/'scripts').mkdir(parents=True)
 shutil.copytree(ROOT/'data'/'processed',DIST/'data'/'processed')
+shutil.copytree(ROOT/'data'/'operations',DIST/'data'/'operations')
 data_version=hashlib.sha256((DIST/'data'/'processed'/'attendance.json').read_bytes()).hexdigest()[:16]
 for name in modules:
     content=(ROOT/'scripts'/name).read_text()
     if name=='history-ui.js':
         content=content.replace("fetch('data/processed/attendance.json')",f"fetch('data/processed/attendance.json?v={data_version}')")
+    if name=='operations-ui.js':
+        ops_version=hashlib.sha256((DIST/'data'/'operations'/'benchmarks.json').read_bytes()).hexdigest()[:16]
+        content=content.replace("fetch('data/operations/benchmarks.json')",f"fetch('data/operations/benchmarks.json?v={ops_version}')")
     if name=='browser-ai.js':
         worker_version=hashlib.sha256((ROOT/'scripts'/'browser-ai-worker.js').read_bytes()).hexdigest()[:16]
         content=content.replace('browser-ai-worker.js?v=browser-v1',f'browser-ai-worker.js?v={worker_version}')

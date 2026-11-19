@@ -14,3 +14,5 @@ work/
 # Local model weights and runtime state never belong in the public build.
 *.gguf
 .ollama/
+
+!data/operations/

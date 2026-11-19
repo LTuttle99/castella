@@ -1,0 +1,21 @@
+{
+  "passed": true,
+  "browser": "153.0.8010.12",
+  "checks": [
+    "no live third-party research requests",
+    "no benchmark preselected",
+    "BLS wage selection and edited-wage reclassification",
+    "labor/overtime/burden/fixed cost formula",
+    "fractional headcount error",
+    "custom gross spending with unavailable research mode",
+    "sensitivity and bad-bound handling",
+    "saved baseline comparison",
+    "17 source/provenance cards and links",
+    "publication versus observation year",
+    "ten operations chat queries and follow-up",
+    "638 historical team-season records retained",
+    "390px layout",
+    "no page errors"
+  ],
+  "errors": []
+}

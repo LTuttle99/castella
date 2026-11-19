@@ -1,3 +1,11 @@
+# Current Castella sources
+
+Operations research now includes 17 prevalidated records from BLS, Minnesota Sports Facilities Authority, Lucas Oil Stadium and SGSA. Exact URLs, dates, methods, usage scope, successful retrievals and failures are documented in OPERATIONS_RESEARCH.md, OPERATIONS_PROVENANCE.json and data/operations/benchmarks.json. Wage selections are scoped references; all unsupported operational ratios and custom spending remain assumptions. Normal app loads/builds do not scrape these sources.
+
+Historical analytics use the unchanged TidyTuesday 2020-02-04 attendance export, attributed to Pro Football Reference, covering 2000–2019. The earlier lack of a historical visualization was resolved in Phase 4; older statements below about its absence describe an earlier implementation only. The approved export has 638 team-seasons and 10,846 weekly slots (10,208 nonmissing values and 638 missing); it is source-reported attendance, not scans or unique physical people. No original trained estimator, current-year attendance data or measured no-show series is connected. Original MAEs remain supplied-summary research facts.
+
+## Earlier source investigation notes
+
 # Data sources and definitions
 
 ## Research facts
