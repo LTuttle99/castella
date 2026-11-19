@@ -16,4 +16,5 @@ assert.equal(h.query(rows,'35,000 tickets and 90% show up'),null);
 assert.match(h.query(rows,'historical number compared to my scenario',a.context,{}, {arrivals:31500}).text,/31,500/);
 assert.match(h.query(rows,'average home attendance for Colts in 2015').text,/denominators are unavailable/);
 assert.equal(h.histogram(rows).reduce((a,b)=>a+b.n,0),6);
-console.log('Passed 19 historical aggregation and conversation assertions.');
+assert.match(h.query(rows,'total attendance for Colts in 2015').text,/season combined reported attendance/);
+console.log('Passed 20 historical aggregation and conversation assertions.');
