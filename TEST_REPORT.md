@@ -1,3 +1,15 @@
+# Browser AI update — 19 November 2026
+
+Castella now includes opt-in **Browser AI**, using self-hosted WebLLM 0.2.89 and a pinned 278 MB Qwen 0.5B model download. No installation, paid API or inference backend is required. Standard remains the default; Ollama remains optional. See [BROWSER_AI.md](BROWSER_AI.md) for setup, architecture, privacy, limitations and test evidence.
+
+Browser factual routing uses the existing deterministic engine; the small model composes explanations, not arithmetic or model-selected tools. Verified cards/state/actions remain authoritative. Real Chromium GPU inference was tested, and weak generated wording triggered verified fallbacks. No broad device compatibility or large-model quality is claimed. Model assets are fetched only after explicit Download & enable, including on return visits. Stop/cancel/unload release the worker; browser caching and scoped deletion are supported.
+
+## Browser AI verification
+
+All **24 Browser AI mock tests**, 79 Ollama mock scenarios, the original JavaScript suites, 14 Python tests, data checks and production build pass. Chromium 153 ran the actual in-browser model: initial load 9,066 ms, reply durations 1,654 / 1,571 / 3,784 / 2,905 ms. Two responses used generated text and two used verified wording fallback; all numerical cards/state stayed correct. No JavaScript page errors occurred. A separate mocked browser UI suite passed consent, unavailable GPU fallback, cancellation/stale-load suppression, Stop, reload, unload, cache controls, mode persistence and 390px layout. Evidence is in verification/browser-ai/. These are single-device observations, not cross-browser performance guarantees.
+
+## Earlier Phase 6 release notes
+
 # Phase 6 verification — 19 November 2026
 
 ## Automated checks
