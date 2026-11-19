@@ -21,3 +21,5 @@ Combined PR #2 validation succeeded (run 44461838918); its production Pages work
 The final public mobile pass found a long-source-URL overflow. The follow-up CSS correction was tested against a source reply and a historical result card: document client width 375, scroll width 375. Desktop cards remained readable. No numerical, data, or workflow logic changed in that correction. See the integration release report and associated follow-up PR for the release evidence.
 
 A further real-data regression verifies the exact historical-first dialogue using current simulator inputs without first creating a ticket scenario in chat. Integration suite: 28 tests.
+
+Static asset regression: test_build_assets.py builds the real output, checks seven relative versioned script URLs against their file checksums, and checks the versioned historical data URL. Python suite: 11 tests. Browser verification of the versioned local artifact passed the historical-first simulator comparison.
