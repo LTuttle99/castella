@@ -4,37 +4,38 @@
 
 **NFL Attendance Intelligence & Stadium Operations Assistant**
 
-Castella is a browser-based NFL attendance research and game-day planning demo. It distinguishes evidence from scenarios and does not claim to forecast future games with the original study's model.
-
-## Run
-
-Open `index.html` in a modern browser, or serve this folder with `python3 -m http.server 8000` and browse to `http://localhost:8000`. No install, sign-in, API key, or backend is needed. The app uses browser JavaScript and local storage for saved scenarios, tone preference, and achievements. On the same origin, legacy `cc_*` values migrate to `castella_*` keys on first run. A Google Fonts import is optional for typography. Core features work with system fallback fonts when offline.
-
-## Included
-
-- Research summary and comparison of the three reported cross-validated MAEs.
-- Deterministic research assistant with source labels and ticket-utilization arithmetic.
-- Low, expected, and high scenario simulator with optional capacity check.
-- Assumption-based staffing, concession, parking, and entry throughput calculations.
-- Locally saved scenario comparisons and achievements.
-- Research and limitation notes.
-- Multi-turn assistant context, explicit no-show/show-up parsing, three tones, ambiguity clarification, and deterministic calculations.
-- Optional nflverse schedule retrieval and normalization script with provenance output.
-
-## Important boundary
-
-The poster title “Forecasting NFL Game Attendance” was supplied, though its file was not present in the inspected workspace. No game-level source dataset, notebook, trained estimator, validation predictions, or stadium operating ratios were provided. The 35,000 tickets at 90% utilization example is arithmetic based on an explicit assumption. No public NFL utilization rate or new prediction is claimed.
-
-See [IMPLEMENTATION_AUDIT.md](IMPLEMENTATION_AUDIT.md), [DATA_SOURCES.md](DATA_SOURCES.md), [MODEL_VALIDATION.md](MODEL_VALIDATION.md), and [DEPLOYMENT.md](DEPLOYMENT.md). Run `node tests/test_scenario.js`, `python3 -m unittest discover -s tests -v`, and `python3 scripts/build.py` to test and create `dist/`.
-
-## GitHub publication
-
 Repository: https://github.com/LTuttle99/castella
 
-The GitHub Actions workflow in `.github/workflows/deploy.yml` tests and builds the site into `dist/`, then deploys GitHub Pages on every push to `main`. The configured site address is https://ltuttle99.github.io/castella/ (publication verification is recorded in DEPLOYMENT.md).
+Website: https://ltuttle99.github.io/castella/
 
-## Phase 5 local conversations
+Castella is a free static application combining historical reported NFL attendance analytics, original research summaries, a local conversational assistant, ticket-utilization scenarios, and game-day operations calculations. No login, API key, backend, or paid model is required.
 
-The assistant now supports guided multi-turn ticket scenarios, casual detours, percentage-point/proportional changes, all four operations tools, result cards, immutable scenario actions, and three tone modes. Enter sends; Shift+Enter adds a line. New/Clear conversation resets page-memory chat; Reset scenario context preserves the transcript and saved scenarios. No API or generative model is used. Historical Phase 4 data is not included because PR #1 is unmerged.
+## Run and verify
 
-Run `node tests/test_conversation.js`, `node tests/test_scenario.js`, `python3 -m unittest discover -s tests -v`, and `python3 scripts/build.py`. See CONVERSATIONAL_ARCHITECTURE.md, CHATBOT_TEST_REPORT.md, and AI_CONFIGURATION.md.
+Serve this directory with `python3 -m http.server 8000 --bind 127.0.0.1` and open http://127.0.0.1:8000/. Build with `python3 scripts/build.py`; deployable files are written to `dist/`.
+
+Run:
+
+```sh
+node tests/test_scenario.js
+node tests/test_conversation.js
+node tests/test_history.js
+node tests/test_integration.js
+python3 -m unittest discover -s tests -v
+python3 scripts/attendance_pipeline.py --check
+python3 scripts/build.py
+```
+
+## Explore and converse
+
+Analytics includes season trends, historical team/location comparisons, team-week distributions and coverage. Filter team, seasons and metric. Ask “What was the Colts' average reported attendance in 2015?”, then “What about 2016?”, “Did that increase?”, “How many games are included?” or “Where did you get that?”. Chat cards can open the matching analytics filters. “Explain the selected chart” reads the current selection. Historical comparisons use the active ticket scenario without confusing reported attendance and assumed physical arrivals.
+
+The assistant maintains context through supported casual detours, handles no-show/show-up phrasing and proportional versus percentage-point changes, calculates staffing/concessions/parking/entry, and offers validated scenario transfer buttons. Professional, Balanced and Fun wording shares the same numerical tools. Enter sends; Shift+Enter adds a line. Chat context stays in page memory. New/Clear conversation clears chat context; Reset scenario context preserves the transcript and saved scenarios. Saved scenarios, achievements, celebrations and tone remain in local storage, including same-origin legacy key migration.
+
+## Data and research boundaries
+
+The supplemental TidyTuesday 2020-02-04 export contains 638 historical team-season records with 10,846 team-week observations, 2000–2019. There are 638 missing weekly values. Historical names are preserved. Weekly means include home and away appearances; samples are not verified unique-game counts. Season totals are deduplicated across weeks. No gate scans, historical no-show rates, verified home-game means, or unique-game rankings are inferred.
+
+The original research reports 5,104 games and CV MAEs of 4,401, 4,344 and 3,045. Those original findings remain separate and unchanged. No original trained estimator or validation predictions are connected. The assistant is deterministic and bounded; there is no generative model or API integration.
+
+See DATA_SOURCES.md, DATA_DICTIONARY.md, DATA_PROVENANCE.json, DATA_QUALITY_REPORT.md, CONVERSATIONAL_ARCHITECTURE.md, TEST_REPORT.md and DEPLOYMENT.md. Normal builds use validated local assets and never download third-party data. Refreshes run separately with `python3 scripts/attendance_pipeline.py`; source checksum changes require inspection and explicit `--approve-source` before publishing an updated manifest.

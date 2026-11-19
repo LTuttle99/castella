@@ -1,15 +1,15 @@
-# GitHub Pages deployment
+# Castella GitHub Pages deployment
 
 Repository: https://github.com/LTuttle99/castella
 
-Configured site: https://ltuttle99.github.io/castella/
+Website: https://ltuttle99.github.io/castella/
 
-Pages source is GitHub Actions. `.github/workflows/deploy.yml` runs on pushes to main and manual workflow dispatch. It uses Python 3.12 and Node 22, executes both test suites, runs `python3 scripts/build.py`, checks the output, uploads `dist/`, and deploys to the github-pages environment. Source script URLs are relative and work under `/castella/`.
+Build: `python3 scripts/build.py`. Serve locally with `python3 -m http.server 8000 --bind 127.0.0.1`. The production artifact is `dist/`; it contains index.html, seven scripts and the validated data/processed export/manifest. All runtime paths are relative and support /castella/.
 
-For future changes, clone the repository, edit the source, run the tests and build, commit, and push to main. Check Actions for the deployment result. The production artifact contains index.html and scripts/scenario.js. No secrets, raw research materials, or downloaded datasets are published.
+Pull requests run validate.yml: all four JavaScript suites, Python tests, historical asset integrity and the production build. Main runs the same checks before deploying dist/ through the existing configure-pages, upload-pages-artifact and deploy-pages Actions. Pages publishing source remains GitHub Actions. No external data download, backend, API secret or paid provider is needed during normal deployment.
 
-The first workflow passed tests/build and failed at configure-pages before Pages was enabled. Pages was enabled and the failed job restarted. The restarted workflow succeeded. The public URL was opened and verified: branding, assistant 35,000 × 90% = 31,500, operations outputs, and no console warnings/errors. Mobile viewport testing was not performed.
+To update: create a branch from current main, edit the application, run every command listed in README.md, verify browser behavior, open/review a PR, and merge after validation. Main then deploys automatically. A successful merge alone is not deployment evidence: confirm the Pages job succeeded and open the public site.
 
-## Phase 5 safe release
+Data refresh is separate. Run attendance_pipeline.py in a network-enabled development environment, inspect source rights and generated quality/provenance, explicitly approve any changed source checksum after review, and submit the validated assets in a PR. Failed downloads and invalid data must not replace approved exports. Never publish raw restricted research material or API credentials.
 
-Branch feature/phase5-conversational-ai starts from production main, with no Phase 4 dependency. Pull requests run conversation tests, original tests and a clean static build. Main's existing Pages deployment includes the new conversation suite and deploys only dist/. No backend/API/model configuration is required or deployed. Review and merge only after checks pass and release is authorized. If Phase 4 merges first, resolve overlapping app/build/workflow changes and run both historical and conversation tests before releasing.
+Phase 4 and Phase 5 integration/release commits, conflicts and verification are recorded in INTEGRATION_RELEASE_REPORT.md.

@@ -11,6 +11,8 @@ function respond(original,text,options={}){
  if(options.assumptions)state.assumptions={...state.assumptions,...options.assumptions};
  const reply=(intent,body,extra={})=>{state.topic=intent;const response={intent,text:body,source:extra.source||'',card:null,actions:[],suggestions:[],...extra};state.lastReply={intent,text:body,source:response.source};state.references=[...state.references.slice(-5),{intent,turn:state.turn}];return {...response,state}};
  const current=()=>state.scenario.current;
+ if(options.historyAdapter){const historical=options.historyAdapter(text,state.historical,{scenario:current(),lastResult:state.lastResult,topic:state.topic});if(historical){state.historical=historical.context;state.lastResult={type:'history',value:historical.value||null};return reply('historical', (tone==='professional'?'From the validated historical records: ':tone==='fun'&&state.turn%3===0?'Here’s the data-desk view 🏟️ ':'')+historical.text,{source:historical.source,card:historical.card||null,actions:historical.actions||[],suggestions:historical.suggestions||[]})}}
+
  if(/where.*(?:number|come from)|\bsource\b|\bevidence\b/.test(q)&&state.lastReply?.source)return reply('source',`That answer came from ${state.lastReply.source}. ${state.lastResult?.type==='scenario'?'Arrivals equal your ticket count multiplied by your assumed show-up rate.':state.lastResult?.type==='operations'?'The estimate uses the editable operating assumptions and rounds required resources up.':'The source label identifies the supplied evidence; it does not imply a live model or scan dataset.'}`,{source:state.lastReply.source});
  if(state.pending&&/percentage points|proportional|relative|will show|will not come/.test(q)){q=state.pending.text+' '+q;state.pending=null;}
  state.scenario.clarification=null;
@@ -28,12 +30,11 @@ function respond(original,text,options={}){
   if(state.lastResult?.type==='operations')return reply('explain','We multiply expected arrivals by your selected operating assumptions and round resource counts up. These ratios are editable planning assumptions; local operating and safety requirements still need qualified review.',{source:'Operations methodology'});
   return reply('explain','MAE is the average size of a model’s error. Lower was better in this comparison; it does not guarantee the error for one future game.',{source});
  }
- // Historical adapter is optional; production currently has no Phase 4 dataset.
+ // Fallback for unloaded or unavailable historical assets.
  const year=q.match(/\b(?:19|20)\d{2}\b/),teams=['Colts','Cowboys','Packers','Rams','Chargers','Raiders','Patriots','Bears','Giants','Jets','Lions','Cardinals','Falcons','Ravens','Bills','Panthers','Bengals','Browns','Broncos','Texans','Jaguars','Chiefs','Dolphins','Vikings','Saints','Eagles','Steelers','49ers','Seahawks','Buccaneers','Titans','Redskins','Commanders'];const team=teams.find(t=>q.includes(t.toLowerCase()));
  const historyRequest=team||(/historical|reported attendance|season|next year/.test(q))||year&&(state.historical.team||/attendance|attend/.test(q));
  if(historyRequest&&!/tickets|show.up|utilization/.test(q)){
   const h=state.historical;h.previousTeam=h.team;h.team=team||h.team;h.start=year?Number(year[0]):/next year/.test(q)&&h.start?h.start+1:h.start;h.end=h.start;
-  if(options.historyAdapter){const result=options.historyAdapter(text,h);if(result){h.previous=h.current;h.current=result;state.lastResult={type:'history',value:result};return reply('historical',result.text,{source:result.source,card:result.card||null,actions:[{type:'open',page:'analytics'}]})}}
   return reply('historical-unavailable',`I remember ${h.team?'the '+h.team:'the historical attendance topic'}${h.start?' in '+h.start:''}, but validated historical records are not available in this version. I can’t supply a verified figure.`,{source:'Current repository asset inventory',actions:[{type:'open',page:'analytics'}]});
  }
  if(state.topic?.startsWith('historical')&&/did it increase|by how much|compare those two/.test(q))return reply('historical-unavailable','I can’t compare those periods without validated historical records. No historical values are loaded in this version.',{source:'Current data availability'});

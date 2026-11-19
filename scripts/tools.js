@@ -16,7 +16,11 @@ const research=Object.freeze({linear:4401,ridge:4344,forest:3045,improvement:135
 function validateAction(action){if(!action||typeof action!=='object')return null;
  if(action.type==='open'&&['simulator','operations','analytics','research'].includes(action.page))return {type:'open',page:action.page};
  if(action.type==='scenario'){try{return {type:'scenario',scenario:scenario(action.scenario.tickets,action.scenario.showUp,action.scenario.definition)}}catch{return null}}
- if(action.type==='history'&&typeof action.team==='string'&&action.team.length<100&&Number.isInteger(action.season)&&action.season>=1900&&action.season<=2100)return {type:'history',team:action.team,season:action.season};
+ if(action.type==='history'){
+  const start=action.start??action.season,end=action.end??action.season,metric=action.metric||'weekly';
+  if(typeof action.team==='string'&&action.team.length<100&&Number.isInteger(start)&&Number.isInteger(end)&&start>=2000&&end<=2019&&start<=end&&['weekly','home','away','total'].includes(metric))return {type:'history',team:action.team,start,end,metric};
+ }
+
  return null;
 }
 const api={number,scenario,compare,operations,defaults,research,validateAction};if(typeof module!=='undefined')module.exports=api;root.CastellaTools=api;

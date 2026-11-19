@@ -1,0 +1,54 @@
+{
+  "source": "TidyTuesday 2020-02-04, via Pro Football Reference",
+  "url": "https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2020/2020-02-04/attendance.csv",
+  "grain": "team-season with 17 team-week observations",
+  "coverage": [
+    2000,
+    2019
+  ],
+  "definition": "Source-reported attendance; no gate scans or verified physical counts.",
+  "license": "TidyTuesday repository CC0 1.0; upstream Pro Football Reference attribution retained. No raw data redistribution.",
+  "sha256": "7577b6ff7a80bd16d6bbac0d4bc9ca87dace64c1a75998206bc9769ec75ba9aa",
+  "transformation_version": "1.0.0",
+  "retrieved_at_utc": "2026-11-19T04:10:47.780421+00:00",
+  "http_result": "GitHub connector HTTP success, UTF-8 repository asset",
+  "quality": {
+    "raw_records": 10846,
+    "valid_team_week_records": 10846,
+    "duplicates": 0,
+    "invalid_records": 0,
+    "missing_weekly_attendance": 638,
+    "team_seasons": 638,
+    "seasons": 20,
+    "historical_team_labels": 34,
+    "coverage": [
+      2000,
+      2019
+    ],
+    "joins": "Not performed. No unique game-level records published.",
+    "ambiguous_matches": 0
+  },
+  "raw_bundled": false,
+  "attempts": [
+    {
+      "url": "https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2020/2020-02-04/attendance.csv",
+      "result": "Success through authorized GitHub connector",
+      "raw_bytes": 570885,
+      "sha256": "7577b6ff7a80bd16d6bbac0d4bc9ca87dace64c1a75998206bc9769ec75ba9aa",
+      "schema": "team,team_name,year,total,home,away,week,weekly_attendance"
+    },
+    {
+      "url": "https://github.com/nflverse/nflverse-data/releases/download/schedules/games.csv",
+      "result": "Failed local DNS: nodename nor servname provided, or not known",
+      "sha256": null,
+      "records": 0,
+      "note": "Release metadata accessible through connector; attendance not assumed."
+    },
+    {
+      "url": "https://github.com/emilp-tuwien/nfl-attendance-prediction",
+      "result": "README and data dictionary retrieved",
+      "redistribution": "Excluded: README explicitly states original Kaggle data has no explicit license",
+      "records_bundled": 0
+    }
+  ]
+}
