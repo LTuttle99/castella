@@ -1,0 +1,20 @@
+const assert=require('node:assert/strict'),h=require('../scripts/history.js');
+// Synthetic fixture, never bundled as historical data.
+const rows=[{team:'Indianapolis Colts',season:2015,home:800,away:1000,total:1800,weekly:[100,200,null]}, {team:'Dallas Cowboys',season:2015,home:1200,away:1000,total:2200,weekly:[200,300,null]}, {team:'Indianapolis Colts',season:2010,home:600,away:800,total:1400,weekly:[50,100,null]}];
+assert.equal(h.select(rows,{team:'Indianapolis Colts',start:2015,end:2015}).length,1);
+assert.equal(h.stats(rows,'weekly').mean,950/6);assert.equal(h.stats(rows,'home').sum,2600);assert.equal(h.stats([]).mean,null);
+assert.equal(h.stats(rows,'weekly').missing,3);assert.throws(()=>h.stats(rows,'scan'));
+let a=h.query(rows,'What was the average reported attendance for Colts in 2015?');assert.match(a.text,/150/);assert.match(a.text,/2 nonmissing team-week/);assert.match(a.source,/TidyTuesday/);
+assert.match(h.query(rows,'How many games are included in that comparison?',a.context).text,/not verified unique games/);
+assert.match(h.query(rows,'Where did that number come from?',a.context).text,/Pro Football Reference/);
+assert.match(h.query(rows,'Is this actual gate-scan attendance?',a.context).text,/not verified gate scans/);
+assert.match(h.query(rows,'Colts attendance 2025').text,/No validated/);
+assert.match(h.query(rows,'Which team had the highest average attendance in the selected period?',{}, {start:2015,end:2015}).text,/Dallas Cowboys/);
+assert.match(h.query(rows,'difference between Cowboys and Colts in 2015').text,/Difference/);
+assert.match(h.query(rows,'How did reported attendance change from 2010 to 2015?').text,/Observed mean changed/);
+assert.equal(h.query(rows,'35,000 tickets and 90% show up'),null);
+assert.match(h.query(rows,'historical number compared to my scenario',a.context,{}, {arrivals:31500}).text,/31,500/);
+assert.match(h.query(rows,'average home attendance for Colts in 2015').text,/denominators are unavailable/);
+assert.equal(h.histogram(rows).reduce((a,b)=>a+b.n,0),6);
+assert.match(h.query(rows,'total attendance for Colts in 2015').text,/season combined reported attendance/);
+console.log('Passed 20 historical aggregation and conversation assertions.');

@@ -23,3 +23,9 @@ scripts = DIST / "scripts"
 scripts.mkdir(exist_ok=True)
 shutil.copy2(ROOT / "scripts" / "scenario.js", scripts / "scenario.js")
 print(f"Static production build created at {DIST}")
+
+subprocess.run(["python3", str(ROOT / "scripts" / "attendance_pipeline.py"), "--check"], check=True)
+for name in ["history.js", "history-ui.js"]:
+    subprocess.run(["node", "--check", str(ROOT / "scripts" / name)], check=True)
+    shutil.copy2(ROOT / "scripts" / name, scripts / name)
+shutil.copytree(ROOT / "data" / "processed", DIST / "data" / "processed", dirs_exist_ok=True)

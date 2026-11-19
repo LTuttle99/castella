@@ -19,3 +19,11 @@ No Open-Meteo history or verified stadium coordinates were obtained. Weather ret
 - Capacity occupancy: illustrative arrivals ÷ entered capacity.
 
 Ticket sales, distribution, announced attendance, scans, and unique physical attendees are distinct measures. Public announced attendance cannot establish a historical no-show rate.
+
+## Phase 4 supplemental data
+
+Successfully retrieved TidyTuesday's 2020-02-04 attendance.csv through the authorized GitHub connector. Local shell DNS failed; the connector retrieved the complete 570,885-byte UTF-8 repository asset. The repository license is CC0 1.0 (https://github.com/rfordatascience/tidytuesday/blob/main/LICENSE). The weekly README attributes the attendance to Pro Football Reference. We publish a compact transformed export under that repository license with both attributions retained, and do not bundle the raw CSV. CC0 does not grant rights the publisher does not own; upstream measurement precision and rights are not independently guaranteed. No restricted original research material is included.
+
+Schema inspection showed 10,846 team-week rows and repeated season home/away/total values. Validation produced 638 team-season records, covering 20 seasons and 34 historical location/team labels. There are 638 missing weekly values. All nonmissing weekly values reconcile to source season totals. No unique game mapping is claimed. See DATA_DICTIONARY.md, DATA_QUALITY_REPORT.md, and DATA_PROVENANCE.json for fields, counts, checksums, and limitations.
+
+The additional research repository README explicitly says its original Kaggle dataset has no explicit license. Its raw records and model files were not copied. nflverse release metadata was inspected, but the CSV retrieval failed at local DNS. No schedule join was forced. Weather enrichment is deferred because verified historical game venues and coordinates are absent.

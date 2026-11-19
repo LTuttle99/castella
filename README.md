@@ -32,3 +32,9 @@ See [IMPLEMENTATION_AUDIT.md](IMPLEMENTATION_AUDIT.md), [DATA_SOURCES.md](DATA_S
 Repository: https://github.com/LTuttle99/castella
 
 The GitHub Actions workflow in `.github/workflows/deploy.yml` tests and builds the site into `dist/`, then deploys GitHub Pages on every push to `main`. The configured site address is https://ltuttle99.github.io/castella/ (publication verification is recorded in DEPLOYMENT.md).
+
+## Historical NFL Attendance Explorer (Phase 4 branch)
+
+Analytics includes an independent TidyTuesday reported-attendance explorer for 2000–2019 with team/location, season-range, and metric controls. Four charts show trends, team comparisons, team-week distributions, and coverage. Historical answers are calculated from local static records with sample counts and sources. Ask “What was the average reported attendance for the Colts in 2015?” and follow with “How many games are included?” Season home totals and home/away weekly averages are distinct metrics. The simulator can compare a selected historical mean with illustrative arrivals without inferring no-shows.
+
+Refresh: `python3 scripts/attendance_pipeline.py` (cached), or `--refresh`. An already downloaded file can be supplied with `--input /path/attendance.csv`. Invalid source records fail before exports are replaced. Source checksum changes require inspection and explicit --approve-source before the manifest is replaced. Normal builds never download data. Verify with `python3 scripts/attendance_pipeline.py --check`, `node tests/test_history.js`, the original test commands, and the production build. Raw downloads remain ignored; only data/processed is published. See DATA_DICTIONARY.md and DATA_QUALITY_REPORT.md.
