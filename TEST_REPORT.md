@@ -19,3 +19,5 @@ The required live-data dialogue calculates Colts weekly means of 66,717.25 for 2
 Combined PR #2 validation succeeded (run 44461838918); its production Pages workflow succeeded (44461906263, merge 7ae7635631dd304cda1ce12a4cdf40b931139b3a). Public checks confirmed the historical dialogue, provenance and sample counts, active ticket comparison, chart-filter actions, all navigation pages and an empty historical selection.
 
 The final public mobile pass found a long-source-URL overflow. The follow-up CSS correction was tested against a source reply and a historical result card: document client width 375, scroll width 375. Desktop cards remained readable. No numerical, data, or workflow logic changed in that correction. See the integration release report and associated follow-up PR for the release evidence.
+
+A further real-data regression verifies the exact historical-first dialogue using current simulator inputs without first creating a ticket scenario in chat. Integration suite: 28 tests.
