@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 """Validate the integrated static app and package a clean Pages artifact."""
+import html as html_module
 import hashlib
 import shutil
 import subprocess
@@ -8,7 +9,7 @@ from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 DIST=ROOT/'dist'
 html=(ROOT/'index.html').read_text()
-modules=['scenario.js','tools.js','history.js','history-dialogue.js','conversation.js','history-ui.js','chat-ui.js']
+modules=['scenario.js','tools.js','history.js','history-dialogue.js','conversation.js','history-ui.js','local-ai-tools.js','local-ai.js','chat-ui.js']
 subprocess.run(['python3',str(ROOT/'scripts'/'attendance_pipeline.py'),'--check'],check=True)
 for name in modules:
     assert f'scripts/{name}' in html, f'Missing script reference: {name}'
@@ -30,3 +31,6 @@ for name in modules:
     html=html.replace(f'src="scripts/{name}"',f'src="scripts/{name}?v={version}"')
 (DIST/'index.html').write_text(html)
 print(f'Integrated static build created at {DIST}')
+
+setup=(ROOT/'LOCAL_AI_SETUP.md').read_text()
+(DIST/'LOCAL_AI_SETUP.html').write_text('<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Castella Local AI setup</title><body style="font:16px system-ui;line-height:1.6;max-width:850px;margin:auto;padding:24px"><a href="./">Return to Castella</a><pre style="white-space:pre-wrap;overflow-wrap:anywhere;font:inherit">'+html_module.escape(setup)+'</pre></body></html>')

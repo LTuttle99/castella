@@ -10,6 +10,10 @@ Website: https://ltuttle99.github.io/castella/
 
 Castella is a free static application combining historical reported NFL attendance analytics, original research summaries, a local conversational assistant, ticket-utilization scenarios, and game-day operations calculations. No login, API key, backend, or paid model is required.
 
+## Optional Local AI (Phase 6 branch)
+
+Standard works for every visitor without setup. Optional generative conversation runs through your own locally installed Ollama model, with no paid API or cloud inference. On the tested 8 GB M1, the installed `qwen3.5:4b` worked but was slow. Run `python3 scripts/serve_local.py`, open http://127.0.0.1:8765/, choose Local AI in Assistant settings and explicitly Connect. No model is downloaded by the application. See [setup](LOCAL_AI_SETUP.md), [evaluation](LOCAL_MODEL_EVALUATION.md) and [integration](OLLAMA_INTEGRATION.md). A developer’s local model is not available to public visitors.
+
 ## Run and verify
 
 Serve this directory with `python3 -m http.server 8000 --bind 127.0.0.1` and open http://127.0.0.1:8000/. Build with `python3 scripts/build.py`; deployable files are written to `dist/`.
@@ -21,6 +25,7 @@ node tests/test_scenario.js
 node tests/test_conversation.js
 node tests/test_history.js
 node tests/test_integration.js
+node tests/test_local_ai.js
 python3 -m unittest discover -s tests -v
 python3 scripts/attendance_pipeline.py --check
 python3 scripts/build.py

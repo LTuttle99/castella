@@ -1,0 +1,11 @@
+{
+  "passed": true,
+  "checks": [
+    "simulator count/rates/capacity/inventory/definition/reset/save",
+    "negative count error",
+    "all operation assumptions and deterministic counts",
+    "zero denominator error",
+    "achievement earned through operations inputs and persisted",
+    "reduced-motion sellout emits no confetti"
+  ]
+}

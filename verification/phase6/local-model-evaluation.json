@@ -1,0 +1,150 @@
+{
+  "model": "qwen3.5:4b",
+  "realModel": true,
+  "started": "2026-11-19T14:18:04.665Z",
+  "results": [
+    {
+      "prompt": "Hey, what is up?",
+      "generated": true,
+      "tools": [],
+      "scenario": null,
+      "historical": null,
+      "elapsedMs": 15586,
+      "firstVisibleMs": 8397,
+      "metrics": [
+        {
+          "loadMs": 35.779375,
+          "totalMs": 15541.643458,
+          "tokens": 35,
+          "tokensPerSecond": 4.814045127959383
+        }
+      ]
+    },
+    {
+      "prompt": "We sold 35000 tickets.",
+      "generated": true,
+      "tools": [
+        "clarify"
+      ],
+      "scenario": null,
+      "historical": null,
+      "elapsedMs": 47549,
+      "firstVisibleMs": 2460,
+      "metrics": [
+        {
+          "loadMs": 64.874875,
+          "totalMs": 31070.985125,
+          "tokens": 128,
+          "tokensPerSecond": 4.4192501154011214
+        },
+        {
+          "loadMs": 76.504042,
+          "totalMs": 16009.227167,
+          "tokens": 61,
+          "tokensPerSecond": 4.589390607924975
+        }
+      ]
+    },
+    {
+      "prompt": "Around 90%.",
+      "generated": true,
+      "tools": [
+        "scenario"
+      ],
+      "scenario": {
+        "tickets": 35000,
+        "definition": "sold",
+        "showUp": 0.9,
+        "noShow": 0.09999999999999998,
+        "arrivals": 31500,
+        "unused": 3500
+      },
+      "historical": null,
+      "elapsedMs": 49350,
+      "firstVisibleMs": null,
+      "metrics": [
+        {
+          "loadMs": 95.693334,
+          "totalMs": 28567.195125,
+          "tokens": 78,
+          "tokensPerSecond": 4.799285275669716
+        },
+        {
+          "loadMs": 63.338125,
+          "totalMs": 19908.94625,
+          "tokens": 76,
+          "tokensPerSecond": 4.598603900160678
+        }
+      ]
+    },
+    {
+      "prompt": "What about 80?",
+      "generated": false,
+      "tools": [
+        "scenario"
+      ],
+      "scenario": {
+        "tickets": 35000,
+        "definition": "sold",
+        "showUp": 0.8,
+        "noShow": 0.19999999999999996,
+        "arrivals": 28000,
+        "unused": 7000
+      },
+      "historical": null,
+      "elapsedMs": 63640,
+      "firstVisibleMs": null,
+      "metrics": [
+        {
+          "loadMs": 62.357584,
+          "totalMs": 39201.754792,
+          "tokens": 82,
+          "tokensPerSecond": 3.645446537192557
+        },
+        {
+          "loadMs": 81.237666,
+          "totalMs": 24046.870333,
+          "tokens": 87,
+          "tokensPerSecond": 4.466180540882185
+        }
+      ]
+    },
+    {
+      "prompt": "How much lower is that?",
+      "error": "Invalid numeric tool argument.",
+      "elapsedMs": 34156
+    },
+    {
+      "prompt": "And parking?",
+      "generated": true,
+      "tools": [
+        "operations"
+      ],
+      "scenario": {
+        "tickets": 35000,
+        "definition": "sold",
+        "showUp": 0.8,
+        "noShow": 0.19999999999999996,
+        "arrivals": 28000,
+        "unused": 7000
+      },
+      "historical": null,
+      "elapsedMs": 53442,
+      "firstVisibleMs": null,
+      "metrics": [
+        {
+          "loadMs": 141.430958,
+          "totalMs": 22352.288875,
+          "tokens": 27,
+          "tokensPerSecond": 3.267461313258051
+        },
+        {
+          "loadMs": 162.227209,
+          "totalMs": 30191.18875,
+          "tokens": 77,
+          "tokensPerSecond": 4.343175137409319
+        }
+      ]
+    }
+  ]
+}
