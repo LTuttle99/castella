@@ -33,3 +33,11 @@ The nested /dist/ localhost build was browser-tested on desktop and 375×812 mob
 ## Limitations
 
 The assistant remains bounded deterministic local software, not generative AI. Historical weekly observations can include both teams' appearances in one game and have missing values. Their figures are not verified unique physical attendees. Supplemental records are separate from the original 5,104-game research sample. Full assistive-technology testing and a new exhaustive check of all achievement/confetti combinations were not repeated. Dataset refreshes remain separately reviewed; normal builds do not download data.
+
+## Production release evidence
+
+PR #1 merged as d292571fda507f33c068a9920b5a307abf833c7a. PR #2's integrated head 80e912d2eda4b56fb2a51b84929002057955c99a passed validation run 44461838918, then merged as 7ae7635631dd304cda1ce12a4cdf40b931139b3a. Production Pages workflow 44461906263 succeeded.
+
+The public https://ltuttle99.github.io/castella/ was independently opened and the required Colts 2015/2016 comparison, sample/source follow-ups, historical-versus-31,500-arrivals comparison and chart-selection actions were exercised. All seven navigation destinations and an unavailable historical selection were checked publicly. No API or credentials are required.
+
+A final public mobile check exposed a long-source-URL overflow (scroll width 579 at viewport width 375). A focused follow-up limits chat/grid minimum widths, wraps long text, and uses equal bounded result-card columns on desktop and a single column on mobile. The corrected production artifact was browser-checked locally with the same source-and-follow-up sequence: viewport width 375 and scroll width 375, with readable wrapped cards. It also passed desktop visual inspection and the production build. This corrective release is tracked separately rather than concealing the discovered defect.
