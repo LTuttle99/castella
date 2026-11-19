@@ -24,3 +24,5 @@ The production artifact was served at localhost /dist/. Verified new chat contro
 No LLM was connected, called, mocked, or evaluated, following the owner's no-API instruction. No generative capability or unrestricted natural-language coverage is claimed.
 
 The final browser pass also verified scenario-context reset, New conversation, honest historical unavailability, persistent Fun tone after reload, mobile layout at 375×812, Shift+Enter without sending, Enter-to-send, a casual thanks detour followed by correct parking, immutable old-card transfer, and no console warnings/errors. The saved tone JSON/plain-text compatibility bug was repaired. A mobile screenshot is saved alongside the deliverable. Assistive-technology testing and exhaustive rechecks of old achievement/confetti combinations were not performed.
+
+GitHub Actions independently passed the conversation validation workflow for PR #2 (https://github.com/LTuttle99/castella/pull/2). Numeric low/base/high controls all support decimal utilization consistently.
