@@ -8,7 +8,7 @@
  $('#assistantMode').value=preferences.mode;$('#ollamaEndpoint').value=preferences.endpoint;
  function persist(){try{localStorage.setItem('castella_local_ai',JSON.stringify(preferences))}catch{}}
  function assumptions(){return Object.fromEntries(Object.keys(T.defaults).map(key=>[key,Number($('#'+key).value)]))}
- function options(){return {tone:$('#tone').value,historyAdapter:CastellaHistoryDialogue.createAdapter(window.castellaHistory.records,window.castellaHistory.filters,()=>window.castellaHistory.status),assumptions:assumptions(),historyRecords:window.castellaHistory.records,selectedScenario:{tickets:Number($('#tickets').value),showUp:Number($('#util').value)/100,definition:$('#definition').value==='Tickets distributed'?'distributed':$('#definition').value==='Other eligible inventory'?'eligible':'sold'}}}
+ function options(){return {tone:$('#tone').value,operationsAdapter:window.castellaOperations?.adapter||CastellaOperationsDialogue.createAdapter(null),historyAdapter:CastellaHistoryDialogue.createAdapter(window.castellaHistory.records,window.castellaHistory.filters,()=>window.castellaHistory.status),assumptions:assumptions(),historyRecords:window.castellaHistory.records,selectedScenario:{tickets:Number($('#tickets').value),showUp:Number($('#util').value)/100,definition:$('#definition').value==='Tickets distributed'?'distributed':$('#definition').value==='Other eligible inventory'?'eligible':'sold'}}}
  function standard(initial,text,opts){return C.respond(initial,R.textForContext(text,initial),opts)}
  function status(text){$('#chatStatus').textContent=text}
  function connection(text){$('#localConnection').textContent=text}

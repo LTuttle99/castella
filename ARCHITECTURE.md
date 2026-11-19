@@ -1,3 +1,15 @@
+# Phase 7 operations architecture
+
+Static GitHub Pages remains the host. operations_pipeline.py collects explicitly, normalizes and checks source evidence; approved data/operations assets are bundled and content-versioned offline. Collection is never required in the browser or normal build.
+
+operations-research.js is the pure validation/labor/spending/sensitivity core. operations-dialogue.js retrieves provenance and performs deterministic multi-turn cost explanations. operations-ui.js renders benchmark/custom controls, role inputs, source cards, sensitivity and comparisons. conversation.js calls the optional operations adapter before general parsing; it retains structured operations context and saved cost input receipts. chat-ui.js passes current source/assumption snapshots to the adapter. local-ai-tools.js exposes operations_research for Ollama; Browser AI composes around the same trusted result.
+
+There are 13 versioned main JS modules, plus the versioned Browser AI worker and self-hosted WebLLM runtime. New operations modules sit after history-dialogue and before/after conversation as required; operations-ui loads before chat-ui. Existing simulator calc dispatches a scenario update so derived operations panels remain aligned. Invalid original inputs also refresh the new panel’s errors.
+
+No source-backed benchmark is selected automatically. Editing a wage clears its research source classification. Counts/hours/burden remain user assumptions. Financial references retain annual scope and are never converted to per-fan defaults. All sourced text is inserted with textContent; original-source links are validated HTTPS hosts. Model actions remain allowlisted.
+
+## Earlier integrated architecture
+
 # Integrated Castella architecture
 
 Castella remains a static single-page application in index.html, with responsive navy/lime styling and inline navigation/simulator/achievement logic.

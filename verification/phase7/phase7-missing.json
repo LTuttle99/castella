@@ -1,0 +1,12 @@
+{
+  "passed": true,
+  "checks": [
+    "research HTTP 503 actionable state",
+    "no fake benchmark options",
+    "custom labor still works",
+    "missing spending not zero",
+    "chat missing evidence acknowledged",
+    "Standard scenarios retained",
+    "all seven navigation views"
+  ]
+}

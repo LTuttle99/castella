@@ -10,6 +10,10 @@ Website: https://ltuttle99.github.io/castella/
 
 Castella is a free static application combining historical reported NFL attendance analytics, original research summaries, a local conversational assistant, ticket-utilization scenarios, and game-day operations calculations. No login, API key, backend, or paid model is required.
 
+## Operations research and costs
+
+The Phase 7 review branch adds explicit BLS wage selection, role-specific labor costs, custom gross concession spending, sensitivity cases and traceable source cards. National May 2023 wage references are not current NFL/Indianapolis rates; no universal staffing, transport or entry ratio is claimed. Start with [operations research and limitations](OPERATIONS_RESEARCH.md) and [benchmarks](OPERATIONS_BENCHMARKS.md). Normal builds use approved local assets, without scraping.
+
 ## Browser AI — no installation
 
 Choose Browser AI in Assistant settings, then **Download & enable Browser AI**. A small Qwen model runs directly in a compatible WebGPU browser. The initial download is about 280 MB plus runtime assets; no Ollama, API key or inference server is required. Your prompts stay on the device. It is a small model with limited quality, so verified calculations and Standard fallback remain authoritative. See [Browser AI setup and limitations](BROWSER_AI.md).
@@ -31,6 +35,8 @@ node tests/test_history.js
 node tests/test_integration.js
 node tests/test_local_ai.js
 node tests/test_browser_ai.js
+node tests/test_operations_research.js
+python3 scripts/operations_pipeline.py --check
 python3 -m unittest discover -s tests -v
 python3 scripts/attendance_pipeline.py --check
 python3 scripts/build.py

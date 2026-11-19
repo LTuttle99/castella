@@ -1,3 +1,15 @@
+Review pull request: https://github.com/LTuttle99/castella/pull/8 — open, unmerged; Phase 7 is not deployed.
+
+# Phase 7 operations research — review branch
+
+The separate Browser AI upgrade was merged in PR #7 and successfully deployed to GitHub Pages; actual public-browser model loading and conversation were verified. Phase 7 builds on that production release and is prepared on feature/phase7-operations-research for its own review, not automatically deployed.
+
+The pre-change audit, 17 scoped reference records, four-source provenance, explicit role-cost formulas, custom gross spending, user-defined sensitivity, benchmark/source controls and contextual assistant are documented in PHASE7_IMPLEMENTATION_REPORT.md and OPERATIONS_RESEARCH.md. Missing empirical inputs remain labeled assumptions; unsupported benchmark modes are unavailable. No historical attendance bytes were changed.
+
+Current validation: 42 operations JS cases, 80 Ollama mock scenarios, 24 Browser AI cases, original JavaScript suites, 20 Python tests and offline build/data checks. Browser results and the PR link are appended after verification. Production deployment remains the existing main-only GitHub Actions workflow. No source collection is needed for a normal build.
+
+## Earlier release notes
+
 # Browser AI update — 19 November 2026
 
 Castella now includes opt-in **Browser AI**, using self-hosted WebLLM 0.2.89 and a pinned 278 MB Qwen 0.5B model download. No installation, paid API or inference backend is required. Standard remains the default; Ollama remains optional. See [BROWSER_AI.md](BROWSER_AI.md) for setup, architecture, privacy, limitations and test evidence.
@@ -29,3 +41,7 @@ The assistant calculates real historical team/season results, retains the metric
 The export has 638 team-seasons, 10,846 team-week observations, 638 missing weekly observations, 20 seasons (2000–2019), and 34 historical team/location labels. There are no verified unique-game IDs or paired ticket/scan records. Reported attendance is not gate-scan attendance or a measured no-show rate. Original research metrics remain separate and unchanged.
 
 Ticket utilization, decimal assumptions, operations calculators, saved comparisons, legacy browser data migration, achievements and reduced-motion-aware celebrations are retained. Build/test/release evidence is recorded in TEST_REPORT.md and INTEGRATION_RELEASE_REPORT.md. Production publication is confirmed there only after the Pages workflow and public browser checks succeed.
+
+## Phase 7 browser verification
+
+Chromium 153 verified explicit wage selection and edited-wage reclassification, $2,666.08 labor from entered synthetic role/time/burden inputs, custom $12-per-attendee gross spending, sensitivity/invalid bounds, saved comparison, 17 source cards/links, year/scope labels, operations chat and follow-ups, no live third-party research requests, and 390px layout with no page errors. A simulated HTTP 503 confirmed missing evidence is acknowledged while custom labor, all navigation and Standard ticket chat still work. Original simulator/operations inputs, errors, achievements/persistence and reduced-motion behavior also passed browser regression. Historical data retained 638 team-seasons, 10,846 weekly slots including 638 missing (10,208 nonmissing); no historical data was altered. Source/evidence screenshots and logs are in verification/phase7/. Safari/Firefox and new real-model operations benchmark inference were not separately tested; Ollama's new tool was exercised through a mocked provider with actual deterministic benchmark retrieval.

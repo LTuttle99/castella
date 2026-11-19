@@ -1,0 +1,176 @@
+{
+  "sources": [
+    {
+      "id": "bls-national",
+      "file": "bls-national-zip",
+      "url": "https://www.bls.gov/oes/special.requests/oesm23nat.zip",
+      "title": "May 2023 National Occupational Employment and Wage Estimates",
+      "publisher": "U.S. Bureau of Labor Statistics",
+      "publication_year": 2024,
+      "observation_year": 2023,
+      "geography": "United States",
+      "venue_type": "Cross-industry occupational employers, not NFL-specific",
+      "methodology": "OEWS employer survey/model-based occupational wage estimates; nominal May 2023 hourly wages; excludes self-employed workers.",
+      "usage": "U.S. government statistical facts; attribution retained; only selected observations redistributed.",
+      "retrieved_at": "2026-11-19T19:57:48.718488+00:00",
+      "sha256": "8ce5e8277c3ba68a19f468fec9b4da21170593d5ad9693a813f1afc04c80efa2",
+      "raw_bundled": false,
+      "acquisition": "HTTPS download succeeded; bounded public source retrieval"
+    },
+    {
+      "id": "msfa-2024",
+      "file": "msfa-2024.pdf",
+      "url": "https://www.msfa.com/df-data/files/Final%20-%20MSFA%202024%20Legislative%20Report.pdf",
+      "title": "2024 Legislative Report, including FY2024 audited financial statements",
+      "publisher": "Minnesota Sports Facilities Authority",
+      "publication_year": 2025,
+      "publication_year_note": "Cover letter dated January 15, 2025; report title and financial observation year are 2024.",
+      "observation_year": 2024,
+      "geography": "Minneapolis, Minnesota",
+      "venue_type": "Public stadium authority / U.S. Bank Stadium, all authority operations",
+      "methodology": "Accrual-basis statement of revenues, expenses and changes in net position; fiscal year ended June 30, 2024, printed page 24 / PDF page 46.",
+      "usage": "Limited factual extraction from public financial disclosure; attribution; full report not redistributed.",
+      "retrieved_at": "2026-11-19T20:08:23.766187+00:00",
+      "sha256": "e32d5e7995677d01d725431d9c2293270b630d030cb4e40b6056ee9cf7b66e3f",
+      "raw_bundled": false,
+      "acquisition": "HTTPS download succeeded; bounded public source retrieval"
+    },
+    {
+      "id": "los-capacity",
+      "file": "los-capacity",
+      "url": "https://www.lucasoilstadium.com/tours-stadium-info/background-history/",
+      "title": "About Lucas Oil Stadium: Background & History",
+      "publisher": "Indiana Convention Center & Lucas Oil Stadium",
+      "publication_year": null,
+      "publication_year_note": "Source page is undated; retrieval year is not a publication year.",
+      "observation_year": null,
+      "geography": "Indianapolis, Indiana",
+      "venue_type": "NFL football stadium configuration",
+      "methodology": "Venue-published approximate football seating capacity; not event-specific saleable inventory.",
+      "usage": "Limited factual extraction with attribution; full page not redistributed.",
+      "retrieved_at": "2026-11-19T20:08:26.903957+00:00",
+      "sha256": "16e057787ca17efca84fbc84a4c71e2ff002e9311db4e8fc3421509b3bc74ddd",
+      "raw_bundled": false,
+      "acquisition": "HTTPS download succeeded; bounded public source retrieval"
+    },
+    {
+      "id": "sgsa-ingress",
+      "file": "sgsa-ingress",
+      "url": "https://sgsa.org.uk/physical-factors/circulation/ingress/",
+      "title": "Ingress: entry capacity \u2013 rates of entry",
+      "publisher": "Sports Grounds Safety Authority",
+      "publication_year": null,
+      "publication_year_note": "Undated online guidance; publication year is unavailable.",
+      "observation_year": null,
+      "geography": "United Kingdom",
+      "venue_type": "Sports grounds guidance, not an NFL security-screening study",
+      "methodology": "Guidance requires lower measured rates to be used where below 660 people/entry point/hour, and annual entry-rate measurement.",
+      "usage": "Limited factual reference with attribution; guidance text not redistributed.",
+      "retrieved_at": "2026-11-19T20:08:29.467746+00:00",
+      "sha256": "f637c128f2a25c6372d64012c8611dcc4212f9cd28ba94d0efab06339fba9627",
+      "raw_bundled": false,
+      "acquisition": "HTTPS download succeeded; bounded public source retrieval"
+    }
+  ],
+  "attempts": [
+    {
+      "id": "bls-robots",
+      "url": "https://www.bls.gov/robots.txt",
+      "status": 200,
+      "bytes": 491,
+      "sha256": "42bec9ceaee5b4929ce2a132fff866c5d66e395195825a77996d9d59e78686df"
+    },
+    {
+      "id": "bls-security",
+      "url": "https://www.bls.gov/oes/2023/may/oes339032.htm",
+      "status": 200,
+      "bytes": 1548244,
+      "sha256": "6b14dec4bca6a52788365f0dd1e49e90be51c9ecd5b25b47d7e05e82da81d44b"
+    },
+    {
+      "id": "bls-national-zip",
+      "url": "https://www.bls.gov/oes/special.requests/oesm23nat.zip",
+      "status": 200,
+      "bytes": 271583,
+      "sha256": "8ce5e8277c3ba68a19f468fec9b4da21170593d5ad9693a813f1afc04c80efa2"
+    },
+    {
+      "id": "sgsa-robots",
+      "url": "https://sgsa.org.uk/robots.txt",
+      "status": 200,
+      "bytes": 72,
+      "sha256": "8655ec3a293b9a216ed3401898167ab5c6a309448fea6f270f1a45cbd7e30271"
+    },
+    {
+      "id": "los-robots",
+      "url": "https://www.lucasoilstadium.com/robots.txt",
+      "status": 200,
+      "bytes": 246,
+      "sha256": "70ba52df8d0ff84af118f9a07d0e6a750ba9a1569890aec7a2bbe428cd1eb3c5"
+    },
+    {
+      "id": "msfa-robots",
+      "url": "https://www.msfa.com/robots.txt",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "id": "bls-metro-zip",
+      "url": "https://www.bls.gov/oes/special.requests/oesm23ma.zip",
+      "error": "HTTP Error 403: Forbidden"
+    },
+    {
+      "id": "msfa-2024.pdf",
+      "url": "https://www.msfa.com/df-data/files/Final%20-%20MSFA%202024%20Legislative%20Report.pdf",
+      "status": 200,
+      "bytes": 9610408,
+      "sha256": "e32d5e7995677d01d725431d9c2293270b630d030cb4e40b6056ee9cf7b66e3f"
+    },
+    {
+      "id": "sgsa-ingress",
+      "url": "https://sgsa.org.uk/physical-factors/circulation/ingress/",
+      "status": 200,
+      "bytes": 64972,
+      "sha256": "7ce2d95b1bcd4c0d4031b50fe92b743a14da622919aa8928c90ebb12c7bc5434"
+    },
+    {
+      "id": "los-capacity",
+      "url": "https://www.lucasoilstadium.com/tours-stadium-info/background-history/",
+      "status": 200,
+      "bytes": 275264,
+      "sha256": "16e057787ca17efca84fbc84a4c71e2ff002e9311db4e8fc3421509b3bc74ddd"
+    },
+    {
+      "url": "https://www.bls.gov/oes/special.requests/oesm23nat.zip",
+      "error": "Robots policy unavailable; collection skipped: HTTP Error 403: Forbidden"
+    },
+    {
+      "id": "msfa-2024",
+      "url": "https://www.msfa.com/df-data/files/Final%20-%20MSFA%202024%20Legislative%20Report.pdf",
+      "status": 200,
+      "sha256": "e32d5e7995677d01d725431d9c2293270b630d030cb4e40b6056ee9cf7b66e3f",
+      "bytes": 9610408
+    },
+    {
+      "id": "los-capacity",
+      "url": "https://www.lucasoilstadium.com/tours-stadium-info/background-history/",
+      "status": 200,
+      "sha256": "16e057787ca17efca84fbc84a4c71e2ff002e9311db4e8fc3421509b3bc74ddd",
+      "bytes": 275264
+    },
+    {
+      "id": "sgsa-ingress",
+      "url": "https://sgsa.org.uk/physical-factors/circulation/ingress/",
+      "status": 200,
+      "sha256": "f637c128f2a25c6372d64012c8611dcc4212f9cd28ba94d0efab06339fba9627",
+      "bytes": 64972
+    },
+    {
+      "id": "bls-indianapolis",
+      "url": "https://www.bls.gov/oes/2023/may/oes_26900.htm",
+      "status": 403,
+      "error": "HTTP Error 403: Forbidden; no bypass attempted",
+      "retrieved_data": false
+    }
+  ],
+  "records": 17
+}

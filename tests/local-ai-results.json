@@ -1,5 +1,5 @@
 {
-  "scenarios": 79,
+  "scenarios": 80,
   "realModel": false,
   "results": [
     {
@@ -316,6 +316,10 @@
     },
     {
       "name": "True deltas arrive before completion",
+      "passed": true
+    },
+    {
+      "name": "New operations benchmark tool composes only verified wages",
       "passed": true
     }
   ]
