@@ -1,0 +1,28 @@
+{
+  "browser": "153.0.8010.12",
+  "loadMs": 9066,
+  "turns": [
+    {
+      "prompt": "Hey, what is up?",
+      "text": "Hello! How can I assist you today?\n\nGenerated in your browser · Qwen 0.5B · General background · generated in this browser",
+      "ms": 1654
+    },
+    {
+      "prompt": "35000 tickets and 90% show up",
+      "text": "That puts your planning estimate at 31,500 people, with 3,500 unused tickets. This uses your 90% show-up assumption.\n\nTicket scenario\nTickets sold\n35,000\nAssumed show-up\n90%\nEstimated arrivals\n31,500\nUnused tickets\n3,500\nVerified tool result · model wording was not used · User assumptions · ticket utilization tool\nOpen this scenario in the simulator",
+      "ms": 1571
+    },
+    {
+      "prompt": "What about 80?",
+      "text": "That puts your planning estimate at 28,000 people, with 7,000 unused tickets. This uses your 80% show-up assumption.\n\nTicket scenario\nTickets sold\n35,000\nAssumed show-up\n80%\nEstimated arrivals\n28,000\nUnused tickets\n7,000\nVerified tool result · model wording was not used · User assumptions · ticket utilization tool\nOpen this scenario in the simulator",
+      "ms": 3784
+    },
+    {
+      "prompt": "And parking?",
+      "text": "For 28,000 estimated arrivals: 7,280 vehicles. I used 65% arriving by car ÷ 2.5 people per vehicle and rounded up. Confirm operating and safety requirements with qualified staff.\n\nparking\nEstimated arrivals\n28,000\nRequired vehicles\n7,280\nGenerated in your browser · Qwen 0.5B · Operations tool · current editable assumptions\nOpen operations",
+      "ms": 2905
+    }
+  ],
+  "errors": [],
+  "downloadRequests": 15
+}

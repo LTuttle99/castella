@@ -1,0 +1,17 @@
+{
+  "passed": true,
+  "browser": "153.0.8010.12",
+  "checks": [
+    "no download before opt-in",
+    "unsupported WebGPU actionable fallback",
+    "scenario retained after failure",
+    "download cancellation and stale-load suppression",
+    "Stop unloads model and preserves context",
+    "reload model and 80% follow-up",
+    "unload and delete cache controls",
+    "390px mobile layout",
+    "remember mode without automatic download",
+    "no page errors"
+  ],
+  "mockInference": true
+}

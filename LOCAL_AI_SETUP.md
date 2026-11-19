@@ -1,3 +1,7 @@
+# Browser AI alternative
+
+For installation-free browser inference, choose **Browser AI** and click **Download & enable Browser AI** in Assistant settings. Requires compatible WebGPU/shader-f16, roughly 1 GB GPU memory and a roughly 280 MB initial model download. Prompts stay in the browser. See BROWSER_AI.md in the repository for details. Standard remains available without a download. The instructions below apply to the separate Ollama mode.
+
 # Castella Local AI setup
 
 Standard mode works immediately without a model, login, API key or payment. Local AI is optional and runs on your own device. A model running on one person's computer is not available to other visitors.

@@ -1,3 +1,11 @@
+# Browser AI update — 19 November 2026
+
+Castella now includes opt-in **Browser AI**, using self-hosted WebLLM 0.2.89 and a pinned 278 MB Qwen 0.5B model download. No installation, paid API or inference backend is required. Standard remains the default; Ollama remains optional. See [BROWSER_AI.md](BROWSER_AI.md) for setup, architecture, privacy, limitations and test evidence.
+
+Browser factual routing uses the existing deterministic engine; the small model composes explanations, not arithmetic or model-selected tools. Verified cards/state/actions remain authoritative. Real Chromium GPU inference was tested, and weak generated wording triggered verified fallbacks. No broad device compatibility or large-model quality is claimed. Model assets are fetched only after explicit Download & enable, including on return visits. Stop/cancel/unload release the worker; browser caching and scoped deletion are supported.
+
+## Earlier Phase 6 release notes
+
 # Phase 6 conversational architecture
 
 The existing Standard engine remains the default. Local AI adds an Ollama provider around the same structured scenario, historical and operating state. `local-ai-tools.js` validates model arguments, executes approved frontend tools and returns provenance and cards. `local-ai.js` passes results back for model explanation, bounds the transcript and rejects unsupported numerical wording. `chat-ui.js` commits a completed result once, handles Stop, retry, new/clear chat, mode/model selection and Standard fallback.
