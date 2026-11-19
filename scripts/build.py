@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 """Validate the integrated static app and package a clean Pages artifact."""
+import hashlib
 import shutil
 import subprocess
 import tempfile
@@ -18,7 +19,14 @@ with tempfile.NamedTemporaryFile('w',suffix='.js') as temp:
     subprocess.run(['node','--check',temp.name],check=True)
 if DIST.exists():shutil.rmtree(DIST)
 (DIST/'scripts').mkdir(parents=True)
-shutil.copy2(ROOT/'index.html',DIST/'index.html')
-for name in modules:shutil.copy2(ROOT/'scripts'/name,DIST/'scripts'/name)
 shutil.copytree(ROOT/'data'/'processed',DIST/'data'/'processed')
+data_version=hashlib.sha256((DIST/'data'/'processed'/'attendance.json').read_bytes()).hexdigest()[:16]
+for name in modules:
+    content=(ROOT/'scripts'/name).read_text()
+    if name=='history-ui.js':
+        content=content.replace("fetch('data/processed/attendance.json')",f"fetch('data/processed/attendance.json?v={data_version}')")
+    (DIST/'scripts'/name).write_text(content)
+    version=hashlib.sha256(content.encode()).hexdigest()[:16]
+    html=html.replace(f'src="scripts/{name}"',f'src="scripts/{name}?v={version}"')
+(DIST/'index.html').write_text(html)
 print(f'Integrated static build created at {DIST}')
