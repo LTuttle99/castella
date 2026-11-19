@@ -1,19 +1,23 @@
-# Architecture
+# Integrated Castella architecture
 
-Castella is a static single-page application in `index.html`. Inline CSS provides responsive navigation and layouts. `scripts/scenario.js` parses attendance statements and maintains explicit conversational scenario state. Inline JavaScript owns navigation, deterministic calculations, local knowledge retrieval, assistant responses, achievement state, and saved comparisons. `scripts/ingest_public.py` is a separate optional public data pipeline. There is no backend or LLM integration.
+Castella remains a static single-page application in index.html, with responsive navy/lime styling and inline navigation/simulator/achievement logic.
 
-## Information flow
+## Modules
 
-User inputs → browser-side scenario calculation → visual outputs and operations estimates. Assistant questions → local keyword matching against a small structured knowledge list → fixed research-grounded answer with source label. There is no server, language model, external data fetch, or API credential.
+- scenario.js: existing ticket scenario parser.
+- tools.js: validated deterministic scenario/comparison/operations functions, original research facts, and action schemas. Simulator and chat share operations formulas.
+- history.js: pure selection, aggregation, distribution and historical query utilities.
+- history-dialogue.js: historical entity/filter resolution, real-data lookups, previous/current results, source and denominator explanations, historical/scenario comparisons and chart action payloads.
+- conversation.js: pure dialogue state transitions, context, personality and tool routing. The historical adapter runs before ticket parsing so season years cannot become ticket counts.
+- history-ui.js: static data loading, four charts, filters and validated selection execution.
+- chat-ui.js: accessible text/cards/chips, resets, keyboard input and allowlisted app actions.
 
-## Reuse assessment
+Script order is scenario, tools, history, history-dialogue, conversation, inline app setup, history-ui, chat-ui. Relative data/script paths work under a project subpath. The historical loader supplies availability state, allowing honest retry messages if records are loading or unavailable.
 
-Research answers and simulator calculations run locally. No generative AI provider is connected.
+## Data and build
 
-## Persistence and privacy
+attendance_pipeline.py downloads with caching/retries, validates the original schema and every row, reconciles weekly and season totals, deduplicates season fields, and writes a compact export with provenance and a checksummed manifest. Raw data stays outside the public build. The build verifies approved local assets, validates JavaScript syntax and emits a clean dist/ containing the HTML, all seven scripts and data/processed. It never downloads data.
 
-Local storage holds saved scenarios, assistant tone, and earned achievements on the visitor's device. Chat history is held in page memory only. No account or remote service is used.
+## State and actions
 
-## Phase 4
-
-Phase 4 adds attendance_pipeline.py for download/cache, schema validation, season normalization, reconciliation, checksummed export, and provenance. history.js contains pure deterministic aggregation/query functions. history-ui.js loads the 146 KB local static asset and renders filters and accessible text/bar charts. Historical question routing runs before the scenario parser, preserving ticket context. Builds validate the pinned manifest without network access. No backend or paid provider was added.
+Current/previous ticket and historical results, assumptions, pending clarifications, sources and conversation references stay in page memory. Existing localStorage holds scenarios, tone and achievements; legacy key migration is retained. Chat is not externally transmitted. Actions allow navigation, validated scenario transfer and validated historical team/range/metric selection. A selection must match real records before controls change. Text is rendered with textContent and never executed as code. No API, backend, account system or generative model is connected.

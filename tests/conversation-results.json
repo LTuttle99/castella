@@ -1,0 +1,390 @@
+{
+  "conversations": 64,
+  "turns": 174,
+  "results": [
+    {
+      "name": "professional: Hey.",
+      "turns": 3,
+      "tone": "professional",
+      "passed": true
+    },
+    {
+      "name": "professional: How are you?",
+      "turns": 3,
+      "tone": "professional",
+      "passed": true
+    },
+    {
+      "name": "professional: That’s actually pretty cool.",
+      "turns": 3,
+      "tone": "professional",
+      "passed": true
+    },
+    {
+      "name": "professional: You are funny.",
+      "turns": 3,
+      "tone": "professional",
+      "passed": true
+    },
+    {
+      "name": "professional: Tell me a joke.",
+      "turns": 3,
+      "tone": "professional",
+      "passed": true
+    },
+    {
+      "name": "balanced: Hey.",
+      "turns": 3,
+      "tone": "balanced",
+      "passed": true
+    },
+    {
+      "name": "balanced: How are you?",
+      "turns": 3,
+      "tone": "balanced",
+      "passed": true
+    },
+    {
+      "name": "balanced: That’s actually pretty cool.",
+      "turns": 3,
+      "tone": "balanced",
+      "passed": true
+    },
+    {
+      "name": "balanced: You are funny.",
+      "turns": 3,
+      "tone": "balanced",
+      "passed": true
+    },
+    {
+      "name": "balanced: Tell me a joke.",
+      "turns": 3,
+      "tone": "balanced",
+      "passed": true
+    },
+    {
+      "name": "fun: Hey.",
+      "turns": 3,
+      "tone": "fun",
+      "passed": true
+    },
+    {
+      "name": "fun: How are you?",
+      "turns": 3,
+      "tone": "fun",
+      "passed": true
+    },
+    {
+      "name": "fun: That’s actually pretty cool.",
+      "turns": 3,
+      "tone": "fun",
+      "passed": true
+    },
+    {
+      "name": "fun: You are funny.",
+      "turns": 3,
+      "tone": "fun",
+      "passed": true
+    },
+    {
+      "name": "fun: Tell me a joke.",
+      "turns": 3,
+      "tone": "fun",
+      "passed": true
+    },
+    {
+      "name": "10% won't come.",
+      "turns": 3,
+      "tone": "balanced",
+      "passed": true
+    },
+    {
+      "name": "10% of the ticket holders are no-shows.",
+      "turns": 3,
+      "tone": "balanced",
+      "passed": true
+    },
+    {
+      "name": "We're missing one in ten fans.",
+      "turns": 3,
+      "tone": "balanced",
+      "passed": true
+    },
+    {
+      "name": "90% show up.",
+      "turns": 3,
+      "tone": "balanced",
+      "passed": true
+    },
+    {
+      "name": "Only nine out of ten attend.",
+      "turns": 3,
+      "tone": "balanced",
+      "passed": true
+    },
+    {
+      "name": "Assume a 90% utilization rate.",
+      "turns": 3,
+      "tone": "balanced",
+      "passed": true
+    },
+    {
+      "name": "Say a quarter of fans stay home.",
+      "turns": 3,
+      "tone": "balanced",
+      "passed": true
+    },
+    {
+      "name": "Only 75% attend.",
+      "turns": 3,
+      "tone": "balanced",
+      "passed": true
+    },
+    {
+      "name": "20% will not arrive.",
+      "turns": 3,
+      "tone": "balanced",
+      "passed": true
+    },
+    {
+      "name": "0% no-show.",
+      "turns": 3,
+      "tone": "balanced",
+      "passed": true
+    },
+    {
+      "name": "100% attend.",
+      "turns": 3,
+      "tone": "balanced",
+      "passed": true
+    },
+    {
+      "name": "Nobody shows up.",
+      "turns": 3,
+      "tone": "balanced",
+      "passed": true
+    },
+    {
+      "name": "Half are no-shows.",
+      "turns": 3,
+      "tone": "balanced",
+      "passed": true
+    },
+    {
+      "name": "One fourth will not come.",
+      "turns": 3,
+      "tone": "balanced",
+      "passed": true
+    },
+    {
+      "name": "35,000 tickets and 90% attend.",
+      "turns": 3,
+      "tone": "balanced",
+      "passed": true
+    },
+    {
+      "name": "35k tickets and 10% are no-shows.",
+      "turns": 3,
+      "tone": "balanced",
+      "passed": true
+    },
+    {
+      "name": "35 thousand tickets and 90% utilization.",
+      "turns": 3,
+      "tone": "balanced",
+      "passed": true
+    },
+    {
+      "name": "80% turnout.",
+      "turns": 3,
+      "tone": "balanced",
+      "passed": true
+    },
+    {
+      "name": "0% attend.",
+      "turns": 3,
+      "tone": "balanced",
+      "passed": true
+    },
+    {
+      "name": "5 percent will not show.",
+      "turns": 3,
+      "tone": "balanced",
+      "passed": true
+    },
+    {
+      "name": "Implied rate dialogue",
+      "turns": 3,
+      "tone": "balanced",
+      "passed": true
+    },
+    {
+      "name": "Percentage point decrease",
+      "turns": 2,
+      "tone": "balanced",
+      "passed": true
+    },
+    {
+      "name": "Proportional decrease",
+      "turns": 2,
+      "tone": "balanced",
+      "passed": true
+    },
+    {
+      "name": "Scenario comparison",
+      "turns": 4,
+      "tone": "balanced",
+      "passed": true
+    },
+    {
+      "name": "Ambiguous delta",
+      "turns": 2,
+      "tone": "balanced",
+      "passed": true
+    },
+    {
+      "name": "Clarified delta",
+      "turns": 3,
+      "tone": "balanced",
+      "passed": true
+    },
+    {
+      "name": "Lower without a number",
+      "turns": 2,
+      "tone": "balanced",
+      "passed": true
+    },
+    {
+      "name": "Operations staffing",
+      "turns": 3,
+      "tone": "balanced",
+      "passed": true
+    },
+    {
+      "name": "Operations concessions",
+      "turns": 3,
+      "tone": "balanced",
+      "passed": true
+    },
+    {
+      "name": "Operations parking",
+      "turns": 3,
+      "tone": "balanced",
+      "passed": true
+    },
+    {
+      "name": "Operations entry",
+      "turns": 3,
+      "tone": "balanced",
+      "passed": true
+    },
+    {
+      "name": "Research source",
+      "turns": 2,
+      "tone": "balanced",
+      "passed": true
+    },
+    {
+      "name": "Plain explanation",
+      "turns": 2,
+      "tone": "balanced",
+      "passed": true
+    },
+    {
+      "name": "Historical honest memory",
+      "turns": 3,
+      "tone": "balanced",
+      "passed": true
+    },
+    {
+      "name": "Topic changes preserve scenario",
+      "turns": 4,
+      "tone": "balanced",
+      "passed": true
+    },
+    {
+      "name": "Injection refusal",
+      "turns": 2,
+      "tone": "balanced",
+      "passed": true
+    },
+    {
+      "name": "Unsupported claim",
+      "turns": 1,
+      "tone": "balanced",
+      "passed": true
+    },
+    {
+      "name": "Unsupported topic",
+      "turns": 1,
+      "tone": "balanced",
+      "passed": true
+    },
+    {
+      "name": "Scenario reset",
+      "turns": 2,
+      "tone": "balanced",
+      "passed": true
+    },
+    {
+      "name": "Negative count",
+      "turns": 1,
+      "tone": "balanced",
+      "passed": true
+    },
+    {
+      "name": "Invalid rate",
+      "turns": 2,
+      "tone": "balanced",
+      "passed": true
+    },
+    {
+      "name": "Navigation allowlist",
+      "turns": 1,
+      "tone": "balanced",
+      "passed": true
+    },
+    {
+      "name": "Missing operational scenario",
+      "turns": 1,
+      "tone": "balanced",
+      "passed": true
+    },
+    {
+      "name": "Explain after reset",
+      "turns": 3,
+      "tone": "balanced",
+      "passed": true
+    },
+    {
+      "name": "Low turnout humor once",
+      "turns": 3,
+      "tone": "fun",
+      "passed": true
+    },
+    {
+      "name": "Casual does not discard pending clarification",
+      "turns": 4,
+      "tone": "balanced",
+      "passed": true
+    },
+    {
+      "name": "Historical follow-up cannot borrow ticket results",
+      "turns": 4,
+      "tone": "balanced",
+      "passed": true
+    },
+    {
+      "name": "Calculation source follow-up",
+      "turns": 2,
+      "tone": "balanced",
+      "passed": true
+    },
+    {
+      "name": "Year never becomes a ticket count",
+      "turns": 1,
+      "tone": "balanced",
+      "passed": true
+    }
+  ]
+}

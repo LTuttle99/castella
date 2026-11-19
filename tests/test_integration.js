@@ -1,0 +1,38 @@
+const assert=require('node:assert/strict');
+const C=require('../scripts/conversation.js'),H=require('../scripts/history.js'),D=require('../scripts/history-dialogue.js'),T=require('../scripts/tools.js');
+const data=require('../data/processed/attendance.json'),records=data.records;
+let passed=0;function test(name,fn){try{fn();passed++}catch(error){error.message=name+': '+error.message;throw error}}
+const options={historyAdapter:D.createAdapter(records)};
+const turn=(s,q,extra={})=>C.respond(s,q,{...options,...extra});
+function chain(messages,extra={}){let state=C.createState();const replies=[];for(const q of messages){const r=turn(state,q,extra);state=r.state;replies.push(r)}return {state,replies}}
+const ask="What was the Colts' average reported attendance in 2015?";
+// Real validated data, independently pinned and checked by the pipeline manifest.
+const colts15=records.find(r=>r.team==='Indianapolis Colts'&&r.season===2015),colts16=records.find(r=>r.team==='Indianapolis Colts'&&r.season===2016);
+test('Published source figures',()=>{assert.equal(colts15.total,1067476);assert.equal(colts16.total,1100210);assert.equal(colts15.weekly.filter(v=>v!==null).length,16)});
+test('Team and season lookup',()=>{const r=turn(C.createState(),ask);assert.equal(r.intent,'historical');assert.equal(r.state.historical.current.mean,1067476/16);assert.equal(r.state.historical.current.n,16);assert.match(r.source,/TidyTuesday/)});
+test('Year follow-up retains metric',()=>{const {state}=chain([ask,'What about 2016?']);assert.equal(state.historical.team,'Indianapolis Colts');assert.equal(state.historical.metric,'weekly');assert.equal(state.historical.current.mean,1100210/16);assert.equal(state.historical.previous.mean,1067476/16)});
+test('Comparison after follow-up',()=>{const {replies,state}=chain([ask,'What about 2016?','Did that increase?']);assert.match(replies[2].text,/2,045.88/);assert.match(replies[2].text,/3.07%/);assert.equal(state.historical.current.mean-state.historical.previous.mean,2045.875)});
+test('Correct denominator',()=>{const {replies}=chain([ask,'How many games are included?']);assert.match(replies[1].text,/16 nonmissing team-week/);assert.match(replies[1].text,/not a verified unique-game count/)});
+test('Actual attribution',()=>{const {replies}=chain([ask,'Where did you get that?']);assert.match(replies[1].text,/Pro Football Reference/);assert.match(replies[1].text,/2020-02-04/)});
+test('Scenario versus historical',()=>{const {state,replies}=chain(['We sold 35,000 tickets and 90% attend.',ask,'How would that compare with my 35,000-ticket scenario?']);assert.equal(state.scenario.current.arrivals,31500);assert.match(replies[2].text,/31,500/);assert.match(replies[2].text,/not a historical no-show calculation/)});
+test('Scenario mismatch clarified',()=>{const {replies}=chain(['We sold 40,000 tickets and 90% attend.',ask,'Compare that with my 35,000-ticket scenario']);assert.match(replies[2].text,/40,000 tickets/);assert.doesNotMatch(replies[2].text,/31,500/)});
+test('Missing year does not invent',()=>{const {replies}=chain([ask,'What about 2025?']);assert.match(replies[1].text,/No validated attendance records/)});
+test('Missing-data follow-up does not quote older year',()=>{const {replies}=chain([ask,'What about 2025?','How many games are included?']);assert.match(replies[2].text,/No validated attendance records/);assert.doesNotMatch(replies[2].text,/16 nonmissing/)});
+test('Next year context',()=>{const {state}=chain([ask,'What about next year?']);assert.equal(state.historical.start,2016);assert.equal(state.historical.current.mean,colts16.total/16)});
+test('Ambiguous nickname',()=>{const r=turn(C.createState(),'Rams reported attendance in 2015');assert.match(r.text,/full city/);assert.equal(r.card,null)});
+test('Explicit historical city',()=>{const r=turn(C.createState(),'St. Louis Rams average reported attendance in 2015');assert.equal(r.state.historical.team,'St. Louis Rams');assert.ok(r.state.historical.current.n>0)});
+test('Action matches queried data',()=>{const r=turn(C.createState(),ask),a=T.validateAction(r.actions[0]);assert.deepEqual(a,{type:'history',team:'Indianapolis Colts',start:2015,end:2015,metric:'weekly'});assert.equal(H.stats(H.select(records,a),a.metric).mean,r.state.historical.current.mean)});
+test('Chart explanation uses selected filters',()=>{const adapter=D.createAdapter(records,()=>({team:'Dallas Cowboys',start:2010,end:2015,metric:'home'}));const r=C.respond(C.createState(),'Explain the selected chart',{historyAdapter:adapter});assert.equal(r.state.historical.team,'Dallas Cowboys');assert.equal(r.state.historical.metric,'home');assert.equal(r.state.historical.current.n,6)});
+test('Changing topics retains ticket context',()=>{const {replies,state}=chain(['We sold 35,000 tickets and 90% attend.',ask,'Thanks','Back to my scenario','And parking?']);assert.equal(state.scenario.current.arrivals,31500);assert.equal(replies[4].intent,'operations');assert.equal(state.lastResult.value.parking,8190)});
+test('Casual detour retains history',()=>{const {state}=chain([ask,'Thanks','What about 2016?']);assert.equal(state.historical.current.mean,colts16.total/16)});
+test('Personality preserves facts',()=>{const variants=['professional','balanced','fun'].map(tone=>turn(C.createState(),ask,{tone}));assert.equal(new Set(variants.map(r=>r.state.historical.current.mean)).size,1);variants.forEach(r=>assert.equal(r.source,variants[0].source))});
+test('Source figures are not scans',()=>{const {replies}=chain([ask,'Is that actual gate-scan attendance?']);assert.match(replies[1].text,/not verified gate scans/)});
+test('Unavailable data load',()=>{const r=C.respond(C.createState(),ask,{historyAdapter:D.createAdapter([],()=>({}),()=> 'unavailable')});assert.match(r.text,/could not be loaded/);assert.equal(r.actions.length,0)});
+test('Untrusted actions rejected',()=>{assert.equal(T.validateAction({type:'eval',code:'alert(1)'}),null);assert.equal(T.validateAction({type:'history',team:'Colts',start:2025,end:2025,metric:'weekly'}),null);assert.equal(T.validateAction({type:'history',team:'Colts',start:2015,end:2015,metric:'scans'}),null)});
+test('Research remains separate',()=>{const r=turn(C.createState(),'Which model performed best?');assert.match(r.text,/3,045/);assert.equal(r.source,'Original supplied research summary');assert.equal(T.research.games,5104)});
+test('Unsupported home-game mean',()=>{const r=turn(C.createState(),'What was the Colts average home attendance in 2015?');assert.match(r.text,/home-game denominators are unavailable/)});
+test('No unique game ranking',()=>{const r=turn(C.createState(),'Which historical game had the highest attendance?');assert.match(r.text,/verified unique-game/)});
+test('Two historical teams',()=>{const r=turn(C.createState(),'Compare Cowboys and Packers reported attendance in 2015');assert.match(r.text,/Dallas Cowboys/);assert.match(r.text,/Green Bay Packers/);assert.match(r.text,/Difference/)});
+test('Comparison sample size',()=>{const {replies}=chain(['Compare Cowboys and Packers reported attendance in 2015','How many games are included?']);assert.match(replies[1].text,/32 nonmissing team-week/)});
+test('Comparison actions select each team',()=>{const r=turn(C.createState(),'Compare Cowboys and Packers reported attendance in 2015');assert.equal(r.actions.length,2);assert.deepEqual(r.actions.map(a=>a.team),['Dallas Cowboys','Green Bay Packers']);r.actions.forEach(a=>assert.ok(H.select(records,T.validateAction(a)).length))});
+console.log(`Passed ${passed} real-data integration tests.`);

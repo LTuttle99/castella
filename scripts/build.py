@@ -1,31 +1,24 @@
 #!/usr/bin/env python3
-"""Validate the inline JavaScript and create a static production directory."""
+"""Validate the integrated static app and package a clean Pages artifact."""
 import shutil
 import subprocess
 import tempfile
 from pathlib import Path
-
-ROOT = Path(__file__).resolve().parents[1]
-SOURCE = ROOT / "index.html"
-DIST = ROOT / "dist"
-html = SOURCE.read_text(encoding="utf-8")
-if "<script>" not in html or "</script>" not in html:
-    raise SystemExit("Could not find the inline application script")
-javascript = html.split("<script>", 1)[1].split("</script>", 1)[0]
-with tempfile.NamedTemporaryFile("w", suffix=".js", encoding="utf-8") as temp:
-    temp.write(javascript)
-    temp.flush()
-    subprocess.run(["node", "--check", temp.name], check=True)
-subprocess.run(["node", "--check", str(ROOT / "scripts" / "scenario.js")], check=True)
-DIST.mkdir(exist_ok=True)
-shutil.copy2(SOURCE, DIST / "index.html")
-scripts = DIST / "scripts"
-scripts.mkdir(exist_ok=True)
-shutil.copy2(ROOT / "scripts" / "scenario.js", scripts / "scenario.js")
-print(f"Static production build created at {DIST}")
-
-subprocess.run(["python3", str(ROOT / "scripts" / "attendance_pipeline.py"), "--check"], check=True)
-for name in ["history.js", "history-ui.js"]:
-    subprocess.run(["node", "--check", str(ROOT / "scripts" / name)], check=True)
-    shutil.copy2(ROOT / "scripts" / name, scripts / name)
-shutil.copytree(ROOT / "data" / "processed", DIST / "data" / "processed", dirs_exist_ok=True)
+ROOT=Path(__file__).resolve().parents[1]
+DIST=ROOT/'dist'
+html=(ROOT/'index.html').read_text()
+modules=['scenario.js','tools.js','history.js','history-dialogue.js','conversation.js','history-ui.js','chat-ui.js']
+subprocess.run(['python3',str(ROOT/'scripts'/'attendance_pipeline.py'),'--check'],check=True)
+for name in modules:
+    assert f'scripts/{name}' in html, f'Missing script reference: {name}'
+    subprocess.run(['node','--check',str(ROOT/'scripts'/name)],check=True)
+inline=html.split('<script>',1)[1].split('</script>',1)[0]
+with tempfile.NamedTemporaryFile('w',suffix='.js') as temp:
+    temp.write(inline);temp.flush()
+    subprocess.run(['node','--check',temp.name],check=True)
+if DIST.exists():shutil.rmtree(DIST)
+(DIST/'scripts').mkdir(parents=True)
+shutil.copy2(ROOT/'index.html',DIST/'index.html')
+for name in modules:shutil.copy2(ROOT/'scripts'/name,DIST/'scripts'/name)
+shutil.copytree(ROOT/'data'/'processed',DIST/'data'/'processed')
+print(f'Integrated static build created at {DIST}')

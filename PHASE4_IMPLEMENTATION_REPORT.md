@@ -1,3 +1,5 @@
+> Historical phase report. Its pre-integration availability/release statements are superseded by INTEGRATION_RELEASE_REPORT.md and TEST_REPORT.md.
+
 # Phase 4 implementation report
 
 ## Owner summary
