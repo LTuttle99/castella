@@ -13,3 +13,9 @@ Commands: node tests/test_scenario.js; node tests/test_conversation.js; node tes
 Coverage includes original ticket parsing, local dialogue/personality, historical aggregation, real-record historical context/source/denominators, missing data, ambiguity, chart action schemas, historical versus scenario comparisons, topic switching, schema/deduplication/reconciliation and pinned data integrity. The integration suite uses the actual approved static export rather than synthetic historical records. The separate existing fixture tests remain confined to tests.
 
 The required live-data dialogue calculates Colts weekly means of 66,717.25 for 2015 (16 nonmissing team-week observations) and 68,763.125 for 2016 (16 observations), a change of 2,045.875. It does not claim verified unique games, gate scans or actual no-shows. Final command results, browser coverage and production release evidence are recorded in INTEGRATION_RELEASE_REPORT.md.
+
+## Production and responsive correction
+
+Combined PR #2 validation succeeded (run 44461838918); its production Pages workflow succeeded (44461906263, merge 7ae7635631dd304cda1ce12a4cdf40b931139b3a). Public checks confirmed the historical dialogue, provenance and sample counts, active ticket comparison, chart-filter actions, all navigation pages and an empty historical selection.
+
+The final public mobile pass found a long-source-URL overflow. The follow-up CSS correction was tested against a source reply and a historical result card: document client width 375, scroll width 375. Desktop cards remained readable. No numerical, data, or workflow logic changed in that correction. See the integration release report and associated follow-up PR for the release evidence.
