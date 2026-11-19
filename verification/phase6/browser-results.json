@@ -1,0 +1,17 @@
+{
+  "passed": true,
+  "browser": "153.0.8010.12",
+  "checks": [
+    "all 7 navigation views",
+    "no Ollama request before opt-in",
+    "Standard scenario and 80% follow-up",
+    "actual proxy tags/show and installed model selection",
+    "mocked generation, Stop and safe rendering",
+    "mocked outage Standard fallback retains context",
+    "retry visible",
+    "preference persistence without auto-connect",
+    "390px mobile overflow",
+    "no page errors"
+  ],
+  "errors": []
+}

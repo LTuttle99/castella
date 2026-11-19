@@ -1,3 +1,13 @@
+# Phase 6 conversational architecture
+
+The existing Standard engine remains the default. Local AI adds an Ollama provider around the same structured scenario, historical and operating state. `local-ai-tools.js` validates model arguments, executes approved frontend tools and returns provenance and cards. `local-ai.js` passes results back for model explanation, bounds the transcript and rejects unsupported numerical wording. `chat-ui.js` commits a completed result once, handles Stop, retry, new/clear chat, mode/model selection and Standard fallback.
+
+No request is sent before explicit Connect. The mode preference persists without automatically reconnecting. Single-flight generation prevents duplicate sends; epochs discard late canceled responses. Retries replace the assistant message for that turn and reuse the tool ledger. Newer state disables stale retry. State is page memory; saved simulator scenarios and achievements remain in their existing browser stores.
+
+See OLLAMA_INTEGRATION.md for the trust boundary and LOCAL_MODEL_EVALUATION.md for tested quality and limitations. The 79 mocked cases test the integration deterministically; actual model quality requires the separate optional runtime evaluation.
+
+## Earlier Standard architecture
+
 # Integrated conversation architecture
 
 conversation.js manages pure structured dialogue state and personality; tools.js provides verified deterministic scenario and operations tools. chat-ui.js renders structured replies and executes only allowlisted actions. scenario.js remains the existing parser. history.js aggregates approved records and history-dialogue.js adapts those records into conversational answers and source-specific context.

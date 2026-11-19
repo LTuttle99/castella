@@ -1,0 +1,322 @@
+{
+  "scenarios": 79,
+  "realModel": false,
+  "results": [
+    {
+      "name": "Casual professional: Hey, what is up?",
+      "passed": true
+    },
+    {
+      "name": "Casual professional: How are you?",
+      "passed": true
+    },
+    {
+      "name": "Casual professional: Tell me a light football joke.",
+      "passed": true
+    },
+    {
+      "name": "Casual professional: This seems like a bad turnout.",
+      "passed": true
+    },
+    {
+      "name": "Casual professional: Explain stadium planning simply.",
+      "passed": true
+    },
+    {
+      "name": "Casual balanced: Hey, what is up?",
+      "passed": true
+    },
+    {
+      "name": "Casual balanced: How are you?",
+      "passed": true
+    },
+    {
+      "name": "Casual balanced: Tell me a light football joke.",
+      "passed": true
+    },
+    {
+      "name": "Casual balanced: This seems like a bad turnout.",
+      "passed": true
+    },
+    {
+      "name": "Casual balanced: Explain stadium planning simply.",
+      "passed": true
+    },
+    {
+      "name": "Casual fun: Hey, what is up?",
+      "passed": true
+    },
+    {
+      "name": "Casual fun: How are you?",
+      "passed": true
+    },
+    {
+      "name": "Casual fun: Tell me a light football joke.",
+      "passed": true
+    },
+    {
+      "name": "Casual fun: This seems like a bad turnout.",
+      "passed": true
+    },
+    {
+      "name": "Casual fun: Explain stadium planning simply.",
+      "passed": true
+    },
+    {
+      "name": "Verified no-show: 10% won't come.",
+      "passed": true
+    },
+    {
+      "name": "Verified no-show: 10% of ticket holders are no-shows.",
+      "passed": true
+    },
+    {
+      "name": "Verified no-show: We're missing one in ten fans.",
+      "passed": true
+    },
+    {
+      "name": "Verified no-show: 90% show up.",
+      "passed": true
+    },
+    {
+      "name": "Verified no-show: Nine out of ten attend.",
+      "passed": true
+    },
+    {
+      "name": "Verified no-show: 90% utilization.",
+      "passed": true
+    },
+    {
+      "name": "Verified no-show: A quarter stay home.",
+      "passed": true
+    },
+    {
+      "name": "Verified no-show: Only 75% attend.",
+      "passed": true
+    },
+    {
+      "name": "Verified no-show: 20% will not arrive.",
+      "passed": true
+    },
+    {
+      "name": "Verified no-show: 100% attend.",
+      "passed": true
+    },
+    {
+      "name": "Verified no-show: 0% no-show.",
+      "passed": true
+    },
+    {
+      "name": "Verified no-show: Half are no-shows.",
+      "passed": true
+    },
+    {
+      "name": "Verified no-show: One fourth will not come.",
+      "passed": true
+    },
+    {
+      "name": "Verified no-show: 80% turnout.",
+      "passed": true
+    },
+    {
+      "name": "Verified no-show: Nobody shows up.",
+      "passed": true
+    },
+    {
+      "name": "Bare follow-up Around 90%.",
+      "passed": true
+    },
+    {
+      "name": "Bare follow-up What about 80?",
+      "passed": true
+    },
+    {
+      "name": "Operating tool staffing",
+      "passed": true
+    },
+    {
+      "name": "Operating tool parking",
+      "passed": true
+    },
+    {
+      "name": "Operating tool concessions",
+      "passed": true
+    },
+    {
+      "name": "Operating tool entry",
+      "passed": true
+    },
+    {
+      "name": "Real historical query 2010",
+      "passed": true
+    },
+    {
+      "name": "Real historical query 2011",
+      "passed": true
+    },
+    {
+      "name": "Real historical query 2012",
+      "passed": true
+    },
+    {
+      "name": "Real historical query 2013",
+      "passed": true
+    },
+    {
+      "name": "Real historical query 2014",
+      "passed": true
+    },
+    {
+      "name": "Real historical query 2015",
+      "passed": true
+    },
+    {
+      "name": "Real historical query 2016",
+      "passed": true
+    },
+    {
+      "name": "Real historical query 2017",
+      "passed": true
+    },
+    {
+      "name": "Historical follow-up memory",
+      "passed": true
+    },
+    {
+      "name": "Missing historical year",
+      "passed": true
+    },
+    {
+      "name": "Rate change points",
+      "passed": true
+    },
+    {
+      "name": "Rate change relative",
+      "passed": true
+    },
+    {
+      "name": "Native comparison tool",
+      "passed": true
+    },
+    {
+      "name": "Research numeric authority",
+      "passed": true
+    },
+    {
+      "name": "Invented number rejected",
+      "passed": true
+    },
+    {
+      "name": "No invented source URL",
+      "passed": true
+    },
+    {
+      "name": "Required tool cannot be skipped",
+      "passed": true
+    },
+    {
+      "name": "Reject invalid call shell{\"command\":\"ls\"}",
+      "passed": true
+    },
+    {
+      "name": "Reject invalid call ticket_scenario{\"tickets\":-1}",
+      "passed": true
+    },
+    {
+      "name": "Reject invalid call ticket_scenario{\"tickets\":99999,\"show_up\":0.9}",
+      "passed": true
+    },
+    {
+      "name": "Reject invalid call operations{\"kind\":\"parking\",\"url\":\"https://evil.example\"}",
+      "passed": true
+    },
+    {
+      "name": "Reject invalid call open_section{\"page\":\"javascript:alert(1)\"}",
+      "passed": true
+    },
+    {
+      "name": "Reject invalid call change_utilization{\"amount\":0.5,\"method\":\"points\",\"direction\":\"decrease\",\"rate\":\"show_up\"}",
+      "passed": true
+    },
+    {
+      "name": "Reject endpoint https://ollama.com",
+      "passed": true
+    },
+    {
+      "name": "Reject endpoint http://192.168.1.20:11434",
+      "passed": true
+    },
+    {
+      "name": "Reject endpoint http://127.0.0.1.evil:11434",
+      "passed": true
+    },
+    {
+      "name": "Reject endpoint http://user:pass@127.0.0.1:11434",
+      "passed": true
+    },
+    {
+      "name": "Reject endpoint http://127.0.0.1:11434/?cloud=yes",
+      "passed": true
+    },
+    {
+      "name": "Local proxy same-origin restriction",
+      "passed": true
+    },
+    {
+      "name": "Missing runtime",
+      "passed": true
+    },
+    {
+      "name": "No installed models",
+      "passed": true
+    },
+    {
+      "name": "Cloud model excluded",
+      "passed": true
+    },
+    {
+      "name": "Malformed streaming response",
+      "passed": true
+    },
+    {
+      "name": "Incomplete stream rejected",
+      "passed": true
+    },
+    {
+      "name": "Failed inference preserves original state",
+      "passed": true
+    },
+    {
+      "name": "Cancellation",
+      "passed": true
+    },
+    {
+      "name": "Timeout",
+      "passed": true
+    },
+    {
+      "name": "Connection recovery",
+      "passed": true
+    },
+    {
+      "name": "Duplicate tool calls do not repeat deltas",
+      "passed": true
+    },
+    {
+      "name": "Retry ledger replays once",
+      "passed": true
+    },
+    {
+      "name": "Summary does not overwrite verified memory",
+      "passed": true
+    },
+    {
+      "name": "Injection cannot create actions",
+      "passed": true
+    },
+    {
+      "name": "True deltas arrive before completion",
+      "passed": true
+    }
+  ]
+}

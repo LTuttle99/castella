@@ -1,7 +1,9 @@
-# AI configuration — no API
+# Castella AI configuration
 
-The project owner explicitly requested **no API** during Phase 5. There is no provider integration, API gateway, model endpoint, API key, server deployment, paid usage, or external chat transmission in this implementation. No .env file or visitor credential is needed.
+Standard is the reliable default: the deterministic assistant runs entirely in the browser, with no model installation or inference requests. Phase 6 adds explicitly opt-in Local AI using the visitor’s own loopback Ollama service. No paid API, login, commercial credential, mandatory backend or cloud provider is configured.
 
-Run the static app with `python3 -m http.server 8000 --bind 127.0.0.1` and open http://127.0.0.1:8000/. Build with `python3 scripts/build.py`. All conversation handling and calculations run locally in the browser. Google Fonts remains an optional existing typography request; it does not receive chat content.
+Use `python3 scripts/serve_local.py` and open http://127.0.0.1:8765/. Open Assistant → Local AI settings, choose Local AI and click Connect. Select an installed local completion model with tool support. Settings persist; every page load requires a fresh explicit connection. Chat remains in page memory and is cleared by New/Clear conversation.
 
-Castella must be described as a local conversational research and calculation assistant. Genuine generative AI is not active. Unrestricted natural conversation remains an outstanding capability, deliberately not addressed with a hosted model under the no-API instruction. A model integration would require a separate future decision and authorization; there are no activation steps or paid services to configure for this release.
+The default direct endpoint is http://127.0.0.1:11434. Only HTTP loopback hosts are accepted; an optional same-origin `/ollama` adapter is available in the local preview. Model names and metadata indicating remote/cloud inference are rejected. No model download happens in the app. Never expose Ollama publicly or use wildcard allowed origins.
+
+See [LOCAL_AI_SETUP.md](LOCAL_AI_SETUP.md) for operating-system instructions, [OLLAMA_INTEGRATION.md](OLLAMA_INTEGRATION.md) for privacy and trust boundaries, and [LOCAL_MODEL_EVALUATION.md](LOCAL_MODEL_EVALUATION.md) for observed performance. A local model on this development Mac is not available to public-site visitors. GitHub Pages continues to support Standard independently of Ollama.

@@ -1,3 +1,11 @@
+# Phase 6 personality integration
+
+Local AI uses a shared system identity: a knowledgeable, engaging NFL attendance analyst and stadium operations coworker. Professional asks for concise, calm analysis; Balanced for relaxed, thoughtful explanations; Fun for contextual wit and occasional playful sarcasm. Humor is model-composed, not a forced phrase trigger. Prompt rules discourage repetitive praise, generic closings and invented findings. Model compliance varies: initial real replies still used generic follow-up questions, so tone polish is not claimed as perfect.
+
+All three modes use identical trusted numerical tools. Standard retains its existing deterministic personality behavior and is labeled separately. No personality setting can change source figures, tool schemas, ticket assumptions or verified results. Missing evidence must remain visible. Historical reported attendance never becomes a gate-scan observation.
+
+## Earlier Standard implementation notes
+
 # Castella personality
 
 Castella is a football-aware coworker who can explain a planning estimate without burying the result. Facts and calculations always come before flair.
