@@ -1,3 +1,9 @@
+# Phase 9 deployment notes
+
+Hosting is unchanged: static GitHub Pages at https://ltuttle99.github.io/castella/ through the existing main-only `deploy.yml`. Phase 9 adds one module (`scripts/profiles.js`, content-versioned like the others; the build now emits 14 versioned scripts) and two CI test suites. No backend, secret, model weight or new third-party runtime dependency was added. Profiles use the visitor's own localStorage. Review and merge the Phase 9 pull request, confirm the Pages job succeeded, then open the public site in a clean browser profile to see the first-visit screen.
+
+## Earlier deployment notes
+
 # Phase 7 operations research — review branch
 
 The separate Browser AI upgrade was merged in PR #7 and successfully deployed to GitHub Pages; actual public-browser model loading and conversation were verified. Phase 7 builds on that production release and is prepared on feature/phase7-operations-research for its own review, not automatically deployed.

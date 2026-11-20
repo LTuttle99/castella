@@ -14,7 +14,8 @@ function operations(arrivals,assumptions={}){
 }
 const research=Object.freeze({linear:4401,ridge:4344,forest:3045,improvement:1356,reduction:1356/4401*100,games:5104,start:2000,end:2019,holdout:2019});
 function validateAction(action){if(!action||typeof action!=='object')return null;
- if(action.type==='open'&&['simulator','operations','analytics','research'].includes(action.page))return {type:'open',page:action.page};
+ if(action.type==='open'&&['simulator','operations','analytics','research','costs','settings','achievements','chat'].includes(action.page))return {type:'open',page:action.page};
+ if(action.type==='operations'){const arrivals=action.arrivals;if(Number.isSafeInteger(arrivals)&&arrivals>=0&&arrivals<=1e7&&(action.focus===undefined||['staffing','parking','concessions','entry'].includes(action.focus)))return action.focus?{type:'operations',arrivals,focus:action.focus}:{type:'operations',arrivals};return null}
  if(action.type==='scenario'){try{return {type:'scenario',scenario:scenario(action.scenario.tickets,action.scenario.showUp,action.scenario.definition)}}catch{return null}}
  if(action.type==='history'){
   const start=action.start??action.season,end=action.end??action.season,metric=action.metric||'weekly';

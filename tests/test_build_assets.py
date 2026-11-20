@@ -11,7 +11,7 @@ class BuildAssetTests(unittest.TestCase):
         subprocess.run(['python3',str(ROOT/'scripts'/'build.py')],check=True,capture_output=True)
         html=(ROOT/'dist'/'index.html').read_text()
         urls=re.findall(r'<script src="([^"]+)"',html)
-        self.assertEqual(len(urls),13)
+        self.assertEqual(len(urls),14)
         for url in urls:
             path,version=url.split('?v=')
             self.assertTrue(path.startswith('scripts/'))

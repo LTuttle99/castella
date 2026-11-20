@@ -1,4 +1,10 @@
-Review pull request: https://github.com/LTuttle99/castella/pull/8 — open, unmerged; Phase 7 is not deployed.
+Phase 9 review branch: `feature/phase9-chat-first-redesign`, targeting `main` through a pull request. It is not deployed until reviewed and merged. (PR #8, Phase 7, has since been merged and deployed.)
+
+# Phase 9 test summary
+
+All pre-existing suites pass unchanged (45 / 64 conversations / 20 / 28 / 80 / 24 / 42, plus 20 Python tests and both data checks). Two new suites, also added to CI: `tests/test_profiles.js` (17) and `tests/test_chat_first.js` (47 tests, 97 turns). The production build passed. Chromium browser verification covered the profile flow, welcome timing, returning visits, profile separation and legacy import, chat calculations and charts, Chat ↔ Explore sync, mobile overflow at 375px and simulated reduced motion. Browser AI and Ollama were not exercised with real models in this phase. Full details and limits are in CHAT_FIRST_TEST_REPORT.md.
+
+## Earlier test reports
 
 # Phase 7 operations research — review branch
 

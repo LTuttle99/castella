@@ -1,3 +1,7 @@
+# Phase 9 — assistant configuration
+
+Assistant settings moved from a collapsible panel on the old Assistant page to **Settings → Assistant**. The controls and opt-in rules are unchanged: Standard is the default, Browser AI downloads only after **Download & enable**, and Ollama connects only after **Connect**. Personality and assistant mode are stored **per profile**. Switching profiles unloads any browser model and disconnects Ollama for the session. All three modes consume the same deterministic results, now including multi-card compound answers and verified chart data; Local AI's numeric grounding check reads every card and chart in the evidence.
+
 # Browser AI update — 19 November 2026
 
 Castella now includes opt-in **Browser AI**, using self-hosted WebLLM 0.2.89 and a pinned 278 MB Qwen 0.5B model download. No installation, paid API or inference backend is required. Standard remains the default; Ollama remains optional. See [BROWSER_AI.md](BROWSER_AI.md) for setup, architecture, privacy, limitations and test evidence.

@@ -10,6 +10,14 @@ Website: https://ltuttle99.github.io/castella/
 
 Castella is a free static application combining historical reported NFL attendance analytics, original research summaries, a local conversational assistant, ticket-utilization scenarios, and game-day operations calculations. No login, API key, backend, or paid model is required.
 
+## Chat-first experience (Phase 9)
+
+Castella opens with **Select an account** (Lori Reams, Anika Rao or Johnny Patrick), shows a short personalized welcome, and lands in Chat: *What can I help you figure out?* Ask about historical attendance, ticket scenarios, staffing, costs, sources or the original research, including several things in one message ("We sold 40,000 tickets, 15% won't show, and what will staffing cost?"). Answers come with typed cards, charts drawn from verified data, and buttons that open the matching tool in **Explore**. **Settings** holds the profile switcher, personality, assistant mode, Browser AI and Ollama, privacy, resets and achievements.
+
+Real-world context is included where a figure could be verified: the 2024 average NFL ticket, a Raiders no-show reference and NFL game-day workforce estimates feed the "money at stake", show-up and staffing answers. See [real-world references](REAL_WORLD_REFERENCES.md).
+
+Profiles are local personalization, not secure accounts: no password, and anyone using the browser can pick any profile. Preferences, saved scenarios and achievements are stored per profile in your browser. See [profile selection](PROFILE_SELECTION.md), [design](CHAT_FIRST_DESIGN.md) and [test report](CHAT_FIRST_TEST_REPORT.md).
+
 ## Operations research and costs
 
 The Phase 7 review branch adds explicit BLS wage selection, role-specific labor costs, custom gross concession spending, sensitivity cases and traceable source cards. National May 2023 wage references are not current NFL/Indianapolis rates; no universal staffing, transport or entry ratio is claimed. Start with [operations research and limitations](OPERATIONS_RESEARCH.md) and [benchmarks](OPERATIONS_BENCHMARKS.md). Normal builds use approved local assets, without scraping.
@@ -36,6 +44,10 @@ node tests/test_integration.js
 node tests/test_local_ai.js
 node tests/test_browser_ai.js
 node tests/test_operations_research.js
+node tests/test_profiles.js
+node tests/test_chat_first.js
+node tests/test_event_references.js
+python3 scripts/event_references.py --check
 python3 scripts/operations_pipeline.py --check
 python3 -m unittest discover -s tests -v
 python3 scripts/attendance_pipeline.py --check
@@ -52,6 +64,6 @@ The assistant maintains context through supported casual detours, handles no-sho
 
 The supplemental TidyTuesday 2020-02-04 export contains 638 historical team-season records with 10,846 team-week observations, 2000–2019. There are 638 missing weekly values. Historical names are preserved. Weekly means include home and away appearances; samples are not verified unique-game counts. Season totals are deduplicated across weeks. No gate scans, historical no-show rates, verified home-game means, or unique-game rankings are inferred.
 
-The original research reports 5,104 games and CV MAEs of 4,401, 4,344 and 3,045. Those original findings remain separate and unchanged. No original trained estimator or validation predictions are connected. The assistant is deterministic and bounded; there is no generative model or API integration.
+The original research reports 5,104 games and CV MAEs of 4,401, 4,344 and 3,045. Those original findings remain separate and unchanged. No original trained estimator or validation predictions are connected. The Standard assistant is deterministic and bounded. Optional Browser AI and Ollama run only on the visitor's device, after explicit opt-in, and only reword verified results. There is no paid or cloud model API.
 
 See DATA_SOURCES.md, DATA_DICTIONARY.md, DATA_PROVENANCE.json, DATA_QUALITY_REPORT.md, CONVERSATIONAL_ARCHITECTURE.md, TEST_REPORT.md and DEPLOYMENT.md. Normal builds use validated local assets and never download third-party data. Refreshes run separately with `python3 scripts/attendance_pipeline.py`; source checksum changes require inspection and explicit `--approve-source` before publishing an updated manifest.

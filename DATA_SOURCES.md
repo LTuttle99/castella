@@ -1,3 +1,7 @@
+# Phase 9 additions
+
+Five hand-collected game-day references (average NFL ticket price, the Raiders 2021 no-show reconstruction, NFLPA and Superdome workforce figures, and a derived workforce ratio) live in `data/operations/event-references.json`, with sources, dates, methods and limitations. See REAL_WORLD_REFERENCES.md. The historical attendance export and operations benchmarks are unchanged.
+
 # Current Castella sources
 
 Operations research now includes 17 prevalidated records from BLS, Minnesota Sports Facilities Authority, Lucas Oil Stadium and SGSA. Exact URLs, dates, methods, usage scope, successful retrievals and failures are documented in OPERATIONS_RESEARCH.md, OPERATIONS_PROVENANCE.json and data/operations/benchmarks.json. Wage selections are scoped references; all unsupported operational ratios and custom spending remain assumptions. Normal app loads/builds do not scrape these sources.

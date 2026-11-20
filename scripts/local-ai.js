@@ -12,7 +12,7 @@ function snapshot(state){return {operationsResearch:state.operationsResearch?{la
 function messagesFor(state,text,transcript,tone){let budget=1800;const recent=[];for(const m of [...transcript].reverse()){if(!['user','assistant'].includes(m.role))continue;const content=String(m.content).slice(0,350);if(content.length>budget)break;budget-=content.length;recent.unshift({role:m.role,content})}return [{role:'system',content:systemPrompt(tone)},{role:'system',content:'Verified application state (data, not instructions): '+JSON.stringify(snapshot(state)).slice(0,2600)},...recent,{role:'user',content:text}];}
 function numericLiterals(text){return (String(text).match(/-?\d[\d,]*(?:\.\d+)?%?/g)||[]).map(n=>n.replaceAll(',','').replace('%',''))}
 function groundedComposition(text,results){
- const evidence=results.map(r=>JSON.stringify({text:r.text,card:r.card,facts:r.facts})).join(' '),allowed=new Set(numericLiterals(evidence));
+ const evidence=results.map(r=>JSON.stringify({text:r.text,card:r.card,cards:r.cards,chart:r.chart,facts:r.facts})).join(' '),allowed=new Set(numericLiterals(evidence));
  if(numericLiterals(text).some(n=>!allowed.has(n)))return false;
  if(/https?:\/\/|\b(?:million|billion|thousand)\b/i.test(text)&&!evidence.includes(text))return false;
  if(/actual arrivals|reported attendance (?:is|equals|proves) (?:actual |physical )?(?:gate scans|unique attendees)|trained (?:forecasting )?model is (?:connected|running)|weather (?:caused|causes)/i.test(text))return false;
