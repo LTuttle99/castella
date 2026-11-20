@@ -20,7 +20,7 @@ Achievements moved out of the main navigation into Settings and the profile menu
 - Space Grotesk for headings and DM Sans for body text, both retained from the existing identity.
 - Thin borders, almost no shadows, no gradients except a short fade above the docked composer, and no glassmorphism or glow.
 - The assistant's messages are unboxed text with a small "C" mark; user messages are compact navy bubbles. Cards carry a thin colored left rule by type (calculation, historical, operations, comparison, source/evidence) and an evidence footer.
-- Motion is limited to card hover lift, the welcome fade and a three-dot typing indicator for local models. All of it is disabled under `prefers-reduced-motion`.
+- Motion is limited to card hover lift, the welcome sequence (chosen-card highlight, staggered name reveal, lime underline sweep, blur-out into Chat, about 2.4 s and skippable) and a three-dot typing indicator for local models. Under `prefers-reduced-motion` all movement is removed; the welcome remains as a short opacity-only cross-fade.
 
 ## Chat components
 
