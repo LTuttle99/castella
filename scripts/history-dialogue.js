@@ -20,6 +20,7 @@ function createAdapter(records,filters=()=>({}),status=()=> 'ready'){
   const follow=Boolean(prior||context.team)&&lastHistorical&&!researchTopic&&/what about|next year|last year|previous year|year before|year after|did (?:that|it)|by how much|how much|compare those|how many games|sample|where|source|gate.scan|physical|simplify|why|explain|higher|lower/.test(q);
   const chartFollow=chartRequest&&(lastHistorical||!environment.scenario&&!/ticket|scenario|staff|parking/.test(q));
   const requested=matches.length||selected||scenarioComparison||follow||chartFollow||!researchTopic&&/historical|reported attendance|dataset|coverage|highest.*attendance|lowest.*attendance|explore.*attendance/.test(q)||years.length&&/attend/.test(q)||years.length&&context.team;
+  if(/\d+(?:\.\d+)?\s*%/.test(q)&&/no.?shows?|show.?up|won't show|will not show/.test(q)&&!/attendance/.test(q))return null;
   if(!requested||/back to my scenario|what about (?:parking|staffing|concessions|entry)|\b(?:tickets?|show.?up|no.?show|utilization)\b.*\d|\d.*\b(?:tickets?|show.?up|no.?show)/.test(q)&&!matches.length&&!scenarioComparison)return null;
   const next={...context};
   const make=(body,extra={})=>({text:body,source,context:next,actions:[],suggestions:[],...extra});

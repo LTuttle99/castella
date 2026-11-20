@@ -19,11 +19,13 @@ All pre-existing suites passed on `main`: 45 scenario, 64 conversations / 174 tu
 | `tests/test_operations_research.js` | 42 passed (unchanged) |
 | **`tests/test_profiles.js`** (new) | 17 passed |
 | **`tests/test_chat_first.js`** (new) | 47 passed, 97 turns |
+| **`tests/test_event_references.js`** (new) | 25 passed |
+| `scripts/event_references.py --check` | passed (5 records, derived ratio 55.84 recomputed) |
 | `python3 -m unittest discover -s tests` | 20 passed (`test_build_assets` now expects 14 versioned scripts because `profiles.js` was added) |
 | `operations_pipeline.py --check`, `attendance_pipeline.py --check` | passed; data bytes unchanged |
 | `scripts/build.py` | passed |
 
-No existing assertion was removed or loosened. Both new suites were added to `validate.yml` and `deploy.yml`.
+No existing assertion was removed or loosened. All three new suites and the reference check were added to `validate.yml` and `deploy.yml`.
 
 **Profile tests:** the three exact names and initials; first visit; selecting and remembering each profile; rejecting unknown profiles; switching; namespaced separation; blocked or missing storage; corrupt JSON; legacy data summarized but not assigned; import copies once without deleting originals; the claim guard; no duplicates on re-import; original `cc_*` keys; invalid legacy values skipped; profile records contain no secrets.
 

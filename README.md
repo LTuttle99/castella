@@ -14,6 +14,8 @@ Castella is a free static application combining historical reported NFL attendan
 
 Castella opens with **Select an account** (Lori Reams, Anika Rao or Johnny Patrick), shows a short personalized welcome, and lands in Chat: *What can I help you figure out?* Ask about historical attendance, ticket scenarios, staffing, costs, sources or the original research, including several things in one message ("We sold 40,000 tickets, 15% won't show, and what will staffing cost?"). Answers come with typed cards, charts drawn from verified data, and buttons that open the matching tool in **Explore**. **Settings** holds the profile switcher, personality, assistant mode, Browser AI and Ollama, privacy, resets and achievements.
 
+Real-world context is included where a figure could be verified: the 2024 average NFL ticket, a Raiders no-show reference and NFL game-day workforce estimates feed the "money at stake", show-up and staffing answers. See [real-world references](REAL_WORLD_REFERENCES.md).
+
 Profiles are local personalization, not secure accounts: no password, and anyone using the browser can pick any profile. Preferences, saved scenarios and achievements are stored per profile in your browser. See [profile selection](PROFILE_SELECTION.md), [design](CHAT_FIRST_DESIGN.md) and [test report](CHAT_FIRST_TEST_REPORT.md).
 
 ## Operations research and costs
@@ -44,6 +46,8 @@ node tests/test_browser_ai.js
 node tests/test_operations_research.js
 node tests/test_profiles.js
 node tests/test_chat_first.js
+node tests/test_event_references.js
+python3 scripts/event_references.py --check
 python3 scripts/operations_pipeline.py --check
 python3 -m unittest discover -s tests -v
 python3 scripts/attendance_pipeline.py --check

@@ -30,6 +30,20 @@ Base: production `main` at `9b766854` ("Integrate operations research, labor cos
 4. **Chat UI** (`chat-ui.js`): typed cards (calculation, historical, operations, comparison, source, evidence), accessible SVG charts with data tables, "Open in Explore" actions including the new validated `operations` action, per-profile assistant preferences, an empty state, a docked composer, and a typing indicator for local models.
 5. **Shared state:** Stadium operations has an explicit arrivals basis with an optional override, used by Explore and Chat alike. The calculation layer (`tools.js`, `operations-research.js`) is still the single source; `uniformLabor` was added for chat staffing cost.
 
+## Real staffing and money data (added on request)
+
+The stakeholder asked for real staffing and money figures to be factored into chat and estimates. Five sourced records were added in `data/operations/event-references.json`:
+
+- the 2024 average NFL ticket ($136.38, TMR via Fortune);
+- the Raiders' 2021 reconstructed no-show rate (14.3%, SBJ via ProFootballTalk);
+- the NFLPA estimate of 3,739 workers per game (AP, 2011);
+- 2,500 Superdome game-day employees (AP, 2011);
+- a derived 55.84 workers per 1,000 attendees.
+
+Each was read on the cited page, with full provenance and limitations, a separate validator and hash check (`scripts/event_references.py`), and an in-browser validation. The existing operations export is untouched.
+
+Chat now answers money-at-stake questions (ticket value, the share held by no-shows, and spending with a user or Explore spend per fan), show-up realism (the Raiders reference, with caveats), real workforce size, and full-workforce cost. Staffing answers include the workforce reference. Explore gained a "Money at stake" panel and a workforce line, and the new records appear in the source library. Per-fan concession spending stays a user assumption because no verifiable figure was found. See REAL_WORLD_REFERENCES.md.
+
 ## Preserved
 
 - Historical data, which is byte-identical and checksum-verified.
@@ -45,7 +59,7 @@ All prior suites pass unchanged. New suites: `test_profiles.js` (17) and `test_c
 
 ## Files
 
-Created: `scripts/profiles.js`, `tests/test_profiles.js`, `tests/test_chat_first.js`, `PROFILE_SELECTION.md`, `CHAT_FIRST_DESIGN.md`, `CHAT_FIRST_TEST_REPORT.md`, this report.
+Created: `scripts/profiles.js`, `scripts/event_references.py`, `data/operations/event-references.json`, `data/operations/event-references.validation.json`, `tests/test_event_references.js`, `REAL_WORLD_REFERENCES.md`, `tests/test_profiles.js`, `tests/test_chat_first.js`, `PROFILE_SELECTION.md`, `CHAT_FIRST_DESIGN.md`, `CHAT_FIRST_TEST_REPORT.md`, this report.
 
 Modified: `index.html`, `scripts/chat-ui.js`, `scripts/conversation.js`, `scripts/history-dialogue.js`, `scripts/operations-dialogue.js`, `scripts/operations-research.js`, `scripts/operations-ui.js`, `scripts/tools.js`, `scripts/local-ai.js`, `scripts/build.py`, `tests/test_build_assets.py`, both workflows, `README.md`, `ARCHITECTURE.md`, `HANDOFF.md`, `TEST_REPORT.md`, `DEPLOYMENT.md`, `CONVERSATIONAL_ARCHITECTURE.md`, `CASTELLA_PERSONALITY.md`, `AI_CONFIGURATION.md`.
 
