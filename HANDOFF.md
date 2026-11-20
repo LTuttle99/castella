@@ -1,4 +1,14 @@
-Review pull request: https://github.com/LTuttle99/castella/pull/8 — open, unmerged; Phase 7 is not deployed.
+Phase 9 review branch: `feature/phase9-chat-first-redesign`, targeting `main` through a pull request. It is not deployed until reviewed and merged. (PR #8, Phase 7, has since been merged and deployed.)
+
+# Phase 9 — chat-first redesign and personalized profiles
+
+Castella now opens with **Select an account** (Lori Reams, Anika Rao, Johnny Patrick), plays a short personalized welcome and lands in a conversation-first Chat. Navigation is reduced to **Chat, Explore and Settings**. Every earlier tool is still there: the historical explorer, ticket scenarios, stadium operations, operating costs, research and sources, saved scenarios, achievements (now in Settings), sellout celebrations, three personalities, Standard, Ollama and Browser AI. Profiles are local personalization, **not authenticated accounts**.
+
+The Standard engine was audited against the brief's example dialogues, and the failures were fixed: multi-intent requests; staffing cost with explicit hours and a BLS or custom wage; "10% lower" clarification; references to earlier scenarios and numbers; "last year" and "how much higher"; charts; evidence and assumption questions; "What changed?" after editing Explore; and no-show and research knowledge answers. Chat renders typed cards and SVG charts built only from verified tool output, and "Open in Explore" actions are validated.
+
+Start with PHASE9_IMPLEMENTATION_REPORT.md, then CHAT_FIRST_DESIGN.md, PROFILE_SELECTION.md and CHAT_FIRST_TEST_REPORT.md. No forecasting model exists in the repository, so none was integrated or claimed.
+
+## Earlier release notes
 
 # Phase 7 operations research — review branch
 

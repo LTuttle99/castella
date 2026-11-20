@@ -1,3 +1,9 @@
+# Phase 9 architecture
+
+The shell in `index.html` now has a profile gate, a welcome overlay and three views (Chat, Explore with five sections, and Settings). All element IDs used by the existing modules are preserved. `go()` maps legacy page names onto Explore sections. `scripts/profiles.js` (loaded first) owns profile selection, per-profile storage keys, storage-failure fallback and opt-in legacy import; inline code and `chat-ui.js` read and write through `window.castellaApp`. A `castella:profilechange` event reloads per-profile data without a page refresh.
+
+Stadium operations has one arrivals basis (`castellaOpsArrivals()`): an optional override or tickets × utilization. The simulator, the operations calculators, the operating-costs module and Chat all use it. `chat-ui.js` renders typed cards, SVG charts and validated actions (`open`, `scenario`, `history`, and the new `operations` with arrivals/focus). Script order is profiles, scenario, tools, history, history-dialogue, operations-research, operations-dialogue, conversation, local-ai-tools, local-ai, inline app, history-ui, browser-ai, operations-ui, chat-ui.
+
 # Phase 7 operations architecture
 
 Static GitHub Pages remains the host. operations_pipeline.py collects explicitly, normalizes and checks source evidence; approved data/operations assets are bundled and content-versioned offline. Collection is never required in the browser or normal build.

@@ -1,3 +1,7 @@
+# Phase 9 personality notes
+
+Balanced (the default) now reads more like a colleague: "That puts us at about 31,500 arrivals, with 3,500 unused tickets (3,500 no-shows)…", with an occasional "Want to see how that affects staffing?" that is never added inside multi-step answers. Fun rotates three no-show quips (couches, unclaimed nachos, watching on TV) only when the no-show share is 5–35% and never repeats one within a conversation; the existing one-time "We're cooked" low-turnout line is unchanged. Professional stays restrained. The selected profile's first name appears in greetings only ("Hey Lori, what are we looking at today?"), is sanitized, and never changes any number. No traits were invented for Lori, Anika or Johnny.
+
 # Phase 6 personality integration
 
 Local AI uses a shared system identity: a knowledgeable, engaging NFL attendance analyst and stadium operations coworker. Professional asks for concise, calm analysis; Balanced for relaxed, thoughtful explanations; Fun for contextual wit and occasional playful sarcasm. Humor is model-composed, not a forced phrase trigger. Prompt rules discourage repetitive praise, generic closings and invented findings. Model compliance varies: initial real replies still used generic follow-up questions, so tone polish is not claimed as perfect.

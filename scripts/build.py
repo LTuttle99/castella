@@ -9,7 +9,7 @@ from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 DIST=ROOT/'dist'
 html=(ROOT/'index.html').read_text()
-modules=['scenario.js','tools.js','history.js','history-dialogue.js','operations-research.js','operations-dialogue.js','conversation.js','history-ui.js','local-ai-tools.js','local-ai.js','browser-ai.js','operations-ui.js','chat-ui.js']
+modules=['profiles.js','scenario.js','tools.js','history.js','history-dialogue.js','operations-research.js','operations-dialogue.js','conversation.js','history-ui.js','local-ai-tools.js','local-ai.js','browser-ai.js','operations-ui.js','chat-ui.js']
 subprocess.run(['python3',str(ROOT/'scripts'/'attendance_pipeline.py'),'--check'],check=True)
 subprocess.run(['python3',str(ROOT/'scripts'/'operations_pipeline.py'),'--check'],check=True)
 for name in modules:

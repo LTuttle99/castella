@@ -1,3 +1,16 @@
+# Phase 9 conversational architecture
+
+`conversation.js` remains the single trusted dialogue engine for all three modes. New behavior, all deterministic:
+
+- **Clause planner** (`planClauses`): a message that sets a scenario *and* asks for operations, cost, a chart or a comparison is split into ordered steps. Each step runs on the evolving state, and execution stops at the first step that needs clarification. Single-topic messages are never split.
+- **Context:** scenario history (first/second/… scenario), the last card (explain the Nth number), an arrivals basis (a ticket scenario or a stated crowd size such as "staffing for 50,000 fans"), labor inputs, pending clarifications (rate-change method, missing labor inputs) and the profile's first name.
+- **Staffing cost:** illustrative headcount × paid hours × wage. The wage is a BLS benchmark or a custom value; hours are always the user's. Castella asks only for what's missing. Role-based labor inputs configured in Explore take precedence.
+- **Explore sync:** each turn receives Explore's assumptions and arrivals basis; "What changed?" diffs them against the inputs behind the last answer.
+- **Evidence answers:** classify every current input as a verified observation, published benchmark, derived estimate, user assumption or illustrative placeholder.
+- **Charts:** emitted as structured `{type, title, unit, points, source}` data from the history adapter, scenario history or research constants. The UI draws SVG from these points only.
+
+Generated text never updates state. See CHAT_FIRST_DESIGN.md.
+
 # Browser AI update — 19 November 2026
 
 Castella now includes opt-in **Browser AI**, using self-hosted WebLLM 0.2.89 and a pinned 278 MB Qwen 0.5B model download. No installation, paid API or inference backend is required. Standard remains the default; Ollama remains optional. See [BROWSER_AI.md](BROWSER_AI.md) for setup, architecture, privacy, limitations and test evidence.
