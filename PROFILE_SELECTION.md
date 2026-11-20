@@ -9,8 +9,14 @@ Profiles are a personalized entry point, **not authentication**. There is no pas
 ## Flow
 
 1. **First visit:** a full-screen navy selection screen. The app behind it is `inert` (not focusable or readable) until a profile is chosen. Focus starts on the first card; arrow keys move between cards; Enter/Space selects.
-2. **Welcome:** "Welcome, {first name}." and "Your game-day command center is ready." fade in (≈0.3 s), hold, and fade as Chat is revealed (≈1.5 s; fully gone ≈1.8 s, measured in Chromium). Focus moves to the chat composer. The welcome text is also announced through a polite live region.
-3. **Reduced motion:** with `prefers-reduced-motion: reduce`, the animation is skipped and Chat appears immediately; the welcome is still announced to screen readers.
+2. **Welcome animation** (measured in Chromium):
+   - 0–0.25 s: the chosen card lights up (lime avatar) while the others dim.
+   - 0.25–0.5 s: the selection screen fades.
+   - 0.5–2.0 s: "Welcome," rises in, the first name follows letter by letter ending in a lime period, a lime line sweeps underneath, and "Your game-day command center is ready." fades in.
+   - ~2.0–2.4 s: the welcome blurs and fades out while Chat rises into place.
+
+   Any key or click skips straight to Chat (Tab and shortcuts are ignored). Focus moves to the chat composer, and the welcome is announced through a polite live region.
+3. **Reduced motion:** with `prefers-reduced-motion: reduce`, nothing moves. The complete "Welcome, {name}." is shown for about 1.3 s with opacity-only fades, then Chat appears.
 4. **Returning visit:** the remembered profile opens Chat directly with "Welcome back, {name}."
 5. **Switch account:** from the header profile menu or Settings → Profile. Switching happens without reloading: preferences, saved scenarios and achievements reload for the new profile, and the conversation restarts. Escape on the selection screen returns to the current profile.
 
